@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+  <data>
+    <variable
+        name="contact"
+        type="com.payup.model.Contact"/>
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:background="?selectableItemBackground"
+      >
+
+    <com.payup.app.widget.AvatarImageView
+        android:id="@+id/avatar_photo_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/space_medium"
+        android:src="@drawable/dodie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ringsColor="@drawable/avatar_portrait_inverse"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <TextView
+        android:id="@+id/contact_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_medium"
+        android:maxLines="1"
+        android:text="@{contact.name}"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toTopOf="@+id/icon_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Tesla da Silva Carvalho"
+        />
+
+    <ImageView
+        android:id="@+id/icon_phone"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="@dimen/space_xsmall"
+        android:scaleType="fitCenter"
+        android:tint="@color/colorAccent"
+        android:src="@drawable/ic_smartphone_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_photo_image"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toBottomOf="@+id/contact_name_text"/>
+
+    <TextView
+        android:id="@+id/contact_phone_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_xsmall"
+        android:text="@{contact.phoneNumber}"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_phone"
+        tools:text="(11) 96225-3044"
+        />
+
+  </android.support.constraint.ConstraintLayout>
+</layout>
