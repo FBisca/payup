@@ -16,6 +16,9 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".app.payment.PaymentActivity"
+        android:theme="@style/AppTheme.DarkScreen"/>
+
   </application>
 
 </manifest>

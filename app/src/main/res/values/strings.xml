@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">PayUp</string>
+  <string name="enviar_pagamento">Enviar Pagamento</string>
+  <string name="historico_de_pagamentos">Histórico de Pagamentos</string>
 </resources>
