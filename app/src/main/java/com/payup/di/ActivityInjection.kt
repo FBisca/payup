@@ -1,11 +1,16 @@
 package com.payup.di
 
 import android.app.Activity
-import com.payup.app.Navigator
-import dagger.MembersInjector
-import dagger.Module
-import dagger.Provides
+import com.payup.app.components.Navigator
+import dagger.*
 import javax.inject.Scope
+import kotlin.reflect.KClass
+
+@MustBeDocumented
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Retention(AnnotationRetention.RUNTIME)
+@MapKey
+annotation class ActivityKey(val value: KClass<out Activity>)
 
 @Scope
 annotation class ActivityScope
@@ -23,7 +28,7 @@ interface ActivityComponentBuilder<out C : ActivityComponent<*>, in M: ActivityM
 abstract class ActivityModule(private val activity: Activity) {
     @Provides
     @ActivityScope
-    open fun providesActivity(): Activity {
+    fun providesActivity(): Activity {
         return activity
     }
 }

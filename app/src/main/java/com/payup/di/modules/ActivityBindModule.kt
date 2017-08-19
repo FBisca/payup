@@ -1,17 +1,27 @@
 package com.payup.di.modules
 
 import com.payup.app.home.HomeActivity
+import com.payup.app.payment.PaymentActivity
 import com.payup.di.ActivityComponentBuilder
-import com.payup.di.components.HomeComponent
+import com.payup.di.ActivityKey
+import com.payup.di.components.HomeActivityComponent
+import com.payup.di.components.PaymentActivityComponent
 import dagger.Binds
 import dagger.Module
-import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
-@Module(subcomponents = arrayOf(HomeComponent::class))
+@Module(subcomponents = arrayOf(
+        HomeActivityComponent::class,
+        PaymentActivityComponent::class
+))
 abstract class ActivityBindModule {
     @Binds
     @IntoMap
-    @ClassKey(HomeActivity::class)
-    abstract fun bindsHomeActivityComponent(builder: HomeComponent.Builder): @JvmWildcard ActivityComponentBuilder<*, *>
+    @ActivityKey(HomeActivity::class)
+    abstract fun homeActivityComponent(builder: HomeActivityComponent.Builder): ActivityComponentBuilder<*, *>
+
+    @Binds
+    @IntoMap
+    @ActivityKey(PaymentActivity::class)
+    abstract fun pPaymentActivityComponent(builder: PaymentActivityComponent.Builder): ActivityComponentBuilder<*, *>
 }

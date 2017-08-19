@@ -9,6 +9,7 @@ import com.payup.model.Contact
 class PaymentContactsAdapter : RecyclerView.Adapter<PaymentContactsAdapter.ViewHolder>() {
 
     var items = emptyList<Contact>()
+    var listener: Listener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,13 +23,21 @@ class PaymentContactsAdapter : RecyclerView.Adapter<PaymentContactsAdapter.ViewH
 
     override fun getItemCount() = items.size
 
-    class ViewHolder(
+    inner class ViewHolder(
             private val binding: ListContactBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener { listener?.onContactClicked(items[adapterPosition]) }
+        }
 
          fun bind(contact: Contact) {
              binding.contact = contact
              binding.executePendingBindings()
          }
+    }
+
+    interface Listener {
+        fun onContactClicked(contact: Contact)
     }
 }

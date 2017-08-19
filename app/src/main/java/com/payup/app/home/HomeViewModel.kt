@@ -1,6 +1,6 @@
 package com.payup.app.home
 
-import com.payup.app.Navigator
+import com.payup.app.components.Navigator
 import com.payup.di.ActivityScope
 import com.payup.model.User
 import io.reactivex.Observable

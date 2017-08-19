@@ -27,6 +27,10 @@ android {
   }
 }
 
+kapt {
+  correctErrorTypes = true
+}
+
 dependencies {
   api project(":commons")
   implementation fileTree(dir: 'libs', include: ['*.jar'])

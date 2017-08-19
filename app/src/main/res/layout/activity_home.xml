@@ -86,7 +86,7 @@
         android:layout_marginLeft="@dimen/space_medium"
         android:layout_marginRight="@dimen/space_medium"
         android:minHeight="58dp"
-        android:onClick="sendPayment"
+        android:onClick="@{() -> viewModel.sendPayment()}"
         android:text="@string/enviar_pagamento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/avatar_contact_text"

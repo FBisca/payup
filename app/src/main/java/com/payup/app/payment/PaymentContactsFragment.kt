@@ -1,7 +1,6 @@
 package com.payup.app.payment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -9,16 +8,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.payup.R
+import com.payup.app.components.ComponentFragment
+import com.payup.di.components.PaymentContactsFragmentComponent
 import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class PaymentContactsFragment : Fragment() {
+class PaymentContactsFragment : ComponentFragment() {
 
-    private val viewModel: PaymentContactsViewModel = PaymentContactsViewModel()
+    @Inject
+    lateinit var viewModel: PaymentContactsViewModel
+
+    @Inject
+    lateinit var adapterListener: PaymentContactsAdapter.Listener
 
     private lateinit var contactList: RecyclerView
-    private val adapter = PaymentContactsAdapter()
+    private val contactAdapter = PaymentContactsAdapter()
     private val disposables = CompositeDisposable()
+
+    override fun initInjection() {
+        injectionBuilder<PaymentContactsFragmentComponent.Builder>()
+                .build()
+                .injectMembers(this)
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -32,10 +44,24 @@ class PaymentContactsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contactList = view.findViewById(R.id.contacts_list)
-        contactList.layoutManager = LinearLayoutManager(context)
-        contactList.adapter = adapter
-        contactList.addItemDecoration(PaymentContactsItemDecoration(context))
+        contactAdapter.listener = adapterListener
 
+        contactList.apply {
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(PaymentContactsItemDecoration(context))
+            adapter = contactAdapter
+        }
+
+        bindContacts()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        contactAdapter.listener = null
+        disposables.clear()
+    }
+
+    private fun bindContacts() {
         viewModel.contacts()
                 .subscribe(
                         { updateList(it) }
@@ -44,17 +70,10 @@ class PaymentContactsFragment : Fragment() {
     }
 
     private fun updateList(newList: List<Contact>) {
-        val oldList = adapter.items
-        adapter.items = newList
+        val oldList = contactAdapter.items
+        contactAdapter.items = newList
 
         DiffUtil.calculateDiff(PaymentContactsDiffCalback(oldList, newList))
-                .dispatchUpdatesTo(adapter)
-
-        contactList.scrollToPosition(0)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        disposables.clear()
+                .dispatchUpdatesTo(contactAdapter)
     }
 }

@@ -1,10 +1,12 @@
 package com.payup.app.payment
 
+import com.payup.di.FragmentScope
 import com.payup.model.Contact
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class PaymentContactsViewModel {
-
+@FragmentScope
+class PaymentContactsViewModel @Inject constructor() {
     fun contacts(): Observable<List<Contact>> {
         return Observable.just(
                 listOf(

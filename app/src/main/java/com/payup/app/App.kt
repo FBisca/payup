@@ -1,8 +1,8 @@
 package com.payup.app
 
 import android.app.Application
-import com.payup.di.ActivityInjectionFactory
-import com.payup.di.DaggerApplicationComponent
+import com.payup.di.injectionFactory.ActivityInjectionFactory
+import com.payup.di.components.DaggerApplicationComponent
 import javax.inject.Inject
 
 class App : Application() {
