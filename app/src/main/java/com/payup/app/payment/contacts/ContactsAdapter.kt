@@ -1,4 +1,4 @@
-package com.payup.app.payment
+package com.payup.app.payment.contacts
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.payup.databinding.ListContactBinding
 import com.payup.model.Contact
 
-class PaymentContactsAdapter : RecyclerView.Adapter<PaymentContactsAdapter.ViewHolder>() {
+class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     var items = emptyList<Contact>()
     var listener: Listener? = null

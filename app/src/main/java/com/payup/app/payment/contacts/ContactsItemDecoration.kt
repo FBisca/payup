@@ -1,13 +1,12 @@
-package com.payup.app.payment
+package com.payup.app.payment.contacts
 
 import android.content.Context
 import android.graphics.*
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.payup.R
 
-class PaymentContactsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
+class ContactsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
     private val dividerHeight = context.resources.displayMetrics.density * 0.5f
     private val dividerMargin = context.resources.getDimension(R.dimen.space_medium)

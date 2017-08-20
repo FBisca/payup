@@ -1,138 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@color/windowBackgroundDark"
-    >
+<layout>
 
-  <com.payup.app.widget.AvatarImageView
-      android:id="@+id/avatar_photo_image"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
-      android:layout_margin="@dimen/space_medium"
-      android:src="@drawable/dodie"
-      android:transitionName="avatarImage"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/appbar"
-      app:ringsColor="@drawable/avatar_portrait"
-      app:ringsCount="2"
-      app:ringsSize="2dp"
-      />
+  <data>
 
-  <TextView
-      android:id="@+id/avatar_name_text"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/space_small"
-      android:layout_marginStart="@dimen/space_small"
-      android:ellipsize="end"
-      android:maxLines="1"
-      android:text="Felippe Simões Bisca"
-      android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead.Inverse"
-      android:textColor="?android:textColorPrimaryInverse"
-      app:layout_constraintBottom_toTopOf="@+id/recipient_name_text"
-      app:layout_constraintEnd_toStartOf="@+id/recipient_photo_image"
-      app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
-      app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"
-      app:layout_constraintVertical_chainStyle="packed"
-      />
+    <variable
+        name="user"
+        type="com.payup.model.User"/>
 
-  <ImageView
-      android:id="@+id/empty_recipient_photo_image"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
-      android:layout_margin="@dimen/space_medium"
-      android:background="@drawable/recipient_portrait_border"
-      android:padding="@dimen/space_medium"
-      android:src="@drawable/ic_person_add_black_24dp"
-      android:tint="#506574"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/appbar"/>
+    <variable
+        name="contact"
+        type="com.payup.model.Contact"/>
+  </data>
 
-  <com.payup.app.widget.AvatarImageView
-      android:id="@+id/recipient_photo_image"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
-      android:layout_margin="@dimen/space_medium"
-      android:src="@drawable/tessa"
-      android:visibility="invisible"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/appbar"
-      app:ringsColor="@drawable/avatar_portrait"
-      app:ringsCount="2"
-      app:ringsSize="2dp"
-      />
-
-  <TextView
-      android:id="@+id/recipient_name_text"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/space_small"
-      android:layout_marginStart="@dimen/space_small"
-      android:layout_marginTop="@dimen/space_small"
-      android:alpha="0.7"
-      android:ellipsize="end"
-      android:gravity="start"
-      android:maxLines="2"
-      android:text="Selecione um contato"
-      android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead.Inverse"
-      android:textColor="?android:textColorPrimaryInverse"
-      app:layout_constraintBottom_toBottomOf="@+id/recipient_photo_image"
-      app:layout_constraintEnd_toStartOf="@+id/recipient_photo_image"
-      app:layout_constraintStart_toEndOf="@+id/icon_arrow_down"
-      app:layout_constraintTop_toBottomOf="@+id/avatar_name_text"
-      />
-
-  <ImageView
-      android:id="@+id/icon_arrow_down"
-      android:layout_width="24dp"
-      android:layout_height="24dp"
-      android:layout_marginEnd="@dimen/space_small"
-      android:layout_marginStart="@dimen/space_small"
-      android:layout_marginTop="@dimen/space_xsmall"
-      android:src="@drawable/ic_subdirectory_arrow_right_black_24dp"
-      android:tint="@color/colorAccent"
-      app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
-      app:layout_constraintTop_toBottomOf="@+id/avatar_name_text"
-      />
-
-  <FrameLayout
-      android:id="@+id/fragment_container"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="#e3e3e3"
-      android:layout_marginTop="@dimen/space_medium"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/avatar_photo_image"
-      />
-
-  <android.support.design.widget.AppBarLayout
-      android:id="@+id/appbar"
+  <android.support.constraint.ConstraintLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
+      android:layout_height="match_parent"
+      tools:background="@color/windowBackgroundDark"
       >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Widget.AppCompat.Toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:title="Enviar Pagamento"
+    <com.payup.app.widget.AvatarImageView
+        android:id="@+id/avatar_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/space_medium"
+        android:src="@drawable/dodie"
+        android:transitionName="avatarImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
         />
 
-  </android.support.design.widget.AppBarLayout>
+    <TextView
+        android:id="@+id/avatar_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_small"
+        android:layout_marginStart="@dimen/space_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@{user.name}"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead.Inverse"
+        android:textColor="?android:textColorPrimaryInverse"
+        app:layout_constraintBottom_toTopOf="@+id/recipient_name_text"
+        app:layout_constraintEnd_toStartOf="@+id/recipient_photo_image"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Dodie Clark"
+        />
 
-  <View
-      android:layout_width="0dp"
-      android:layout_height="5dp"
-      android:background="@drawable/shadow_down"
-      app:layout_constraintTop_toTopOf="@id/fragment_container"/>
+    <ImageView
+        android:id="@+id/empty_recipient_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/space_medium"
+        android:background="@drawable/recipient_portrait_border"
+        android:padding="@dimen/space_medium"
+        android:src="@drawable/ic_person_add_black_24dp"
+        android:tint="#506574"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"/>
 
-</android.support.constraint.ConstraintLayout>
+    <com.payup.app.widget.AvatarImageView
+        android:id="@+id/recipient_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/space_medium"
+        android:src="@drawable/tessa"
+        android:visibility="invisible"
+        android:transitionName="recipientImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <TextView
+        android:id="@+id/recipient_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_small"
+        android:layout_marginStart="@dimen/space_small"
+        android:layout_marginTop="@dimen/space_small"
+        android:alpha="0.7"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="2"
+        android:text="@{contact == null ? @string/select_contact : contact.name}"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead.Inverse"
+        android:textColor="?android:textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="@+id/recipient_photo_image"
+        app:layout_constraintEnd_toStartOf="@+id/recipient_photo_image"
+        app:layout_constraintStart_toEndOf="@+id/icon_arrow_down"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_name_text"
+        tools:text="@string/select_contact"
+        />
+
+    <ImageView
+        android:id="@+id/icon_arrow_down"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/space_small"
+        android:layout_marginStart="@dimen/space_small"
+        android:layout_marginTop="@dimen/space_xsmall"
+        android:src="@drawable/ic_subdirectory_arrow_right_black_24dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_name_text"
+        />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_medium"
+        android:background="#e3e3e3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_photo_image"
+        />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
+        >
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          style="@style/Widget.AppCompat.Toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+
+          app:title="Enviar Pagamento"
+          />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:background="@drawable/shadow_down"
+        app:layout_constraintTop_toTopOf="@id/fragment_container"/>
+
+  </android.support.constraint.ConstraintLayout>
+</layout>

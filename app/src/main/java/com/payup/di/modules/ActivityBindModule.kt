@@ -23,5 +23,5 @@ abstract class ActivityBindModule {
     @Binds
     @IntoMap
     @ActivityKey(PaymentActivity::class)
-    abstract fun pPaymentActivityComponent(builder: PaymentActivityComponent.Builder): ActivityComponentBuilder<*, *>
+    abstract fun paymentActivityComponent(builder: PaymentActivityComponent.Builder): ActivityComponentBuilder<*, *>
 }

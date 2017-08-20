@@ -9,10 +9,10 @@ abstract class ComponentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initInjection()
+        initInjection(savedInstanceState)
     }
 
-    abstract fun initInjection()
+    abstract fun initInjection(savedInstanceState: Bundle?)
 
     protected inline fun <reified T : ActivityComponentBuilder<*, *>> injectionBuilder(): T {
         val app = application as App

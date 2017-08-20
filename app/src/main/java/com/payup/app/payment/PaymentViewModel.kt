@@ -1,16 +1,41 @@
 package com.payup.app.payment
 
+import com.payup.app.payment.contacts.ContactsAdapter
 import com.payup.di.ActivityScope
 import com.payup.model.Contact
-import io.reactivex.subjects.PublishSubject
+import com.payup.model.User
+import io.reactivex.Observable
+import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
 @ActivityScope
-class PaymentViewModel @Inject constructor() : PaymentContactsAdapter.Listener {
+class PaymentViewModel @Inject constructor(
+        viewState: ViewState
+) : ContactsAdapter.Listener {
 
-    val contactClickEvents: PublishSubject<Contact> = PublishSubject.create()
+    val viewState: BehaviorSubject<ViewState> = BehaviorSubject.createDefault(viewState)
 
     override fun onContactClicked(contact: Contact) {
-        contactClickEvents.onNext(contact)
+        if (viewState.value is ViewState.ContactSelect) {
+            viewState.onNext(ViewState.ValueInput(contact))
+        }
+    }
+
+    fun onBackPressed(): Boolean {
+        if (viewState.value is ViewState.ValueInput) {
+            viewState.onNext(ViewState.ContactSelect)
+            return true
+        }
+
+        return false
+    }
+
+    fun user(): Observable<User> {
+        return Observable.just(User("Dodie Clark", "doddleoddle@gmail.com"))
+    }
+
+    sealed class ViewState {
+        object ContactSelect : ViewState()
+        data class ValueInput(val contact: Contact) : ViewState()
     }
 }

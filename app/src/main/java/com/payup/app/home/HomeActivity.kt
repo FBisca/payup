@@ -3,7 +3,6 @@ package com.payup.app.home
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.util.Pair
 import android.view.View
 import com.payup.R
 import com.payup.app.components.ComponentActivity
@@ -31,7 +30,7 @@ class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
         bindUser()
     }
 
-    override fun initInjection() {
+    override fun initInjection(savedInstanceState: Bundle?) {
         injectionBuilder<HomeActivityComponent.Builder>()
                 .module(HomeActivityModule(this))
                 .build()
@@ -43,10 +42,10 @@ class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
         disposables.dispose()
     }
 
-    override fun getSharedElementsForIntent(intent: Intent): Pair<View, String>? {
+    override fun getSharedElementsForIntent(intent: Intent): Array<Pair<View, String>> {
         return when (intent.component.className) {
-            PaymentActivity::class.java.name -> Pair.create(layoutBinding.avatarPhotoImage,"avatarImage")
-            else -> null
+            PaymentActivity::class.java.name -> arrayOf(layoutBinding.avatarPhotoImage to "avatarImage")
+            else -> emptyArray()
         }
     }
 

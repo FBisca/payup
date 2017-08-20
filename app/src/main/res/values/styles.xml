@@ -20,4 +20,11 @@
     <item name="android:backgroundTint">@color/colorHighlight</item>
   </style>
 
+  <style name="InputButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+    <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Display1</item>
+    <item name="android:background">?selectableItemBackground</item>
+    <item name="android:minHeight">58dp</item>
+    <item name="android:textColor">#506574</item>
+  </style>
+
 </resources>

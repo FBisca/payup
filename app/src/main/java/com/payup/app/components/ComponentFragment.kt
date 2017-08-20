@@ -3,6 +3,9 @@ package com.payup.app.components
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.payup.di.FragmentComponentBuilder
 
 abstract class ComponentFragment : Fragment() {
@@ -14,12 +17,12 @@ abstract class ComponentFragment : Fragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initInjection()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        initInjection(savedInstanceState)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    abstract fun initInjection()
+    abstract fun initInjection(savedInstanceState: Bundle?)
 
     protected inline fun <reified C: FragmentComponentBuilder<*>> injectionBuilder(): C {
         val castActivity = activity as ComponentFragmentActivity

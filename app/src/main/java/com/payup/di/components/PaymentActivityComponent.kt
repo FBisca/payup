@@ -1,9 +1,10 @@
 package com.payup.di.components
 
 import com.payup.app.payment.PaymentActivity
-import com.payup.app.payment.PaymentContactsAdapter
-import com.payup.app.payment.PaymentContactsFragment
+import com.payup.app.payment.contacts.ContactsAdapter
+import com.payup.app.payment.contacts.ContactsFragment
 import com.payup.app.payment.PaymentViewModel
+import com.payup.app.payment.valueInput.ValueInputFragment
 import com.payup.di.*
 import dagger.Module
 import dagger.Provides
@@ -18,18 +19,33 @@ interface PaymentActivityComponent : ActivityComponent<PaymentActivity> {
 }
 
 @ActivityScope
-@Module(subcomponents = arrayOf(PaymentContactsFragmentComponent::class))
+@Module(subcomponents = arrayOf(
+        ContactsFragmentComponent::class,
+        ValueInputFragmentComponent::class
+))
 class PaymentActivityModule(activity: PaymentActivity) : ActivityModule(activity) {
 
     @Provides
+    fun providesViewState(): PaymentViewModel.ViewState {
+        return PaymentViewModel.ViewState.ContactSelect
+    }
+
+    @Provides
+    fun providesAdapterListener(viewModel: PaymentViewModel): ContactsAdapter.Listener {
+        return viewModel
+    }
+
+    @Provides
     @IntoMap
-    @FragmentKey(PaymentContactsFragment::class)
-    fun bindsPaymentContactsComponent(builder: PaymentContactsFragmentComponent.Builder): FragmentComponentBuilder<*> {
+    @FragmentKey(ContactsFragment::class)
+    fun bindsContactsComponent(builder: ContactsFragmentComponent.Builder): FragmentComponentBuilder<*> {
         return builder
     }
 
     @Provides
-    fun providesAdapterListener(viewModel: PaymentViewModel): PaymentContactsAdapter.Listener {
-        return viewModel
+    @IntoMap
+    @FragmentKey(ValueInputFragment::class)
+    fun bindsValueInputComponent(builder: ValueInputFragmentComponent.Builder): FragmentComponentBuilder<*> {
+        return builder
     }
 }

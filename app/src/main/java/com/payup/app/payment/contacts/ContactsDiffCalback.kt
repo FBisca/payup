@@ -1,9 +1,9 @@
-package com.payup.app.payment
+package com.payup.app.payment.contacts
 
 import android.support.v7.util.DiffUtil
 import com.payup.model.Contact
 
-class PaymentContactsDiffCalback(
+class ContactsDiffCalback(
         private val oldList: List<Contact>,
         private val newList: List<Contact>
 ) : DiffUtil.Callback() {

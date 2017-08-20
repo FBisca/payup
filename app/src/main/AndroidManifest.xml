@@ -10,16 +10,25 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
 
-    <activity android:name=".app.home.HomeActivity">
+    <activity android:name=".app.home.HomeActivity"/>
+
+    <activity
+        android:name=".app.payment.PaymentActivity"
+        android:theme="@style/AppTheme.DarkScreen"
+        android:windowSoftInputMode="stateAlwaysHidden"/>
+
+    <activity
+        android:name=".app.payment.ConfirmationActivity"
+        android:theme="@style/AppTheme.DarkScreen"/>
+
+    <activity-alias
+        android:name=".Launcher"
+        android:targetActivity=".app.home.HomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
-    </activity>
-
-    <activity
-        android:name=".app.payment.PaymentActivity"
-        android:theme="@style/AppTheme.DarkScreen"/>
+    </activity-alias>
 
   </application>
 

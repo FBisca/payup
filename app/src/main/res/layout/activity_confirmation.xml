@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+  <data>
+
+    <variable
+        name="user"
+        type="com.payup.model.User"/>
+
+    <variable
+        name="contact"
+        type="com.payup.model.Contact"/>
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:background="@color/windowBackgroundDark"
+      >
+
+    <com.payup.app.widget.AvatarImageView
+        android:id="@+id/avatar_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dodie"
+        android:transitionName="avatarImage"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/icon_arrow_forward"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:layout_constraintBottom_toTopOf="@id/value_text"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <ImageView
+        android:id="@+id/icon_arrow_forward"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_medium"
+        android:src="@drawable/ic_arrow_forward_black_24dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_photo_image"
+        app:layout_constraintEnd_toStartOf="@+id/recipient_photo_image"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"/>
+
+    <com.payup.app.widget.AvatarImageView
+        android:id="@+id/recipient_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/tessa"
+        android:transitionName="recipientImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_arrow_forward"
+        app:layout_constraintTop_toTopOf="@id/avatar_photo_image"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <TextView
+        android:id="@+id/value_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_small"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display2"
+        android:textColor="?android:textColorPrimaryInverse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_photo_image"
+        app:layout_constraintBottom_toTopOf="@id/recipient_name_text"
+        tools:text="$25.00"/>
+
+    <TextView
+        android:id="@+id/recipient_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+        android:textColor="?android:textColorPrimaryInverse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/value_text"
+        app:layout_constraintBottom_toTopOf="@+id/icon_phone"
+        tools:text="Tessa Violet"/>
+
+    <ImageView
+        android:id="@+id/icon_phone"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="@dimen/space_xsmall"
+        android:scaleType="fitCenter"
+        android:tint="@color/colorAccent"
+        android:src="@drawable/ic_smartphone_black_24dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/recipient_phone_text"
+        app:layout_constraintBottom_toTopOf="@+id/confirmation_button"
+        app:layout_constraintTop_toBottomOf="@+id/recipient_name_text"/>
+
+    <TextView
+        android:id="@+id/recipient_phone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_xsmall"
+        android:text="@{contact.phoneNumber}"
+        android:textColor="?android:textColorPrimaryInverse"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_phone"
+        tools:text="(11) 96225-3044"
+        />
+
+    <Button
+        android:id="@+id/confirmation_button"
+        style="@style/HomeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_medium"
+        android:layout_marginLeft="@dimen/space_medium"
+        android:layout_marginRight="@dimen/space_medium"
+        android:minHeight="58dp"
+        android:text="@string/confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
+        >
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          style="@style/Widget.AppCompat.Toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:title="Confirmar transação"
+          />
+
+    </android.support.design.widget.AppBarLayout>
+
+  </android.support.constraint.ConstraintLayout>
+</layout>
