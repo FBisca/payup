@@ -8,13 +8,18 @@ import org.junit.Before
 import org.junit.Test
 import java.io.FileInputStream
 import java.io.InputStream
+import javax.inject.Provider
 
 class ContactRepositoryTest {
 
     private lateinit var repository: ContactRepositoryImpl
 
-    private val contactJsonLazy: Lazy<InputStream> = Lazy {
-        FileInputStream(javaClass.classLoader.getResource("json/contacts.json").path)
+    private val contactJsonLazy = object : Provider<Lazy<InputStream>> {
+        override fun get(): Lazy<InputStream> {
+            return Lazy {
+                FileInputStream(javaClass.classLoader.getResource("json/contacts.json").path)
+            }
+        }
     }
 
     @Before

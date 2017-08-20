@@ -44,7 +44,6 @@ class ContactsFragment : ComponentFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contactList = view.findViewById(R.id.contacts_list)
-        contactAdapter.listener = adapterListener
 
         contactList.apply {
             layoutManager = LinearLayoutManager(context)
@@ -52,6 +51,7 @@ class ContactsFragment : ComponentFragment() {
             adapter = contactAdapter
         }
 
+        contactAdapter.listener = adapterListener
         bindContacts()
     }
 

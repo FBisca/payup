@@ -2,11 +2,13 @@ package com.payup.app.ui.payment.valueInput
 
 import com.payup.app.components.Navigator
 import com.payup.di.FragmentScope
+import com.payup.model.Contact
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
 @FragmentScope
 class ValueInputViewModel @Inject constructor(
+        private val contact: Contact,
         private val navigator: Navigator
 ) {
 
@@ -20,7 +22,7 @@ class ValueInputViewModel @Inject constructor(
     }
 
     fun sendClick() {
-        navigator.goToPaymentConfirmation()
+        navigator.goToPaymentConfirmation(contact, inputEvents.value.toDouble() / 100)
     }
 
     private fun removeValue() {

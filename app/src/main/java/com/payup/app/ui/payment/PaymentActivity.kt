@@ -97,8 +97,9 @@ class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements
     private fun showValueInput(viewState: PaymentViewModel.ViewState.ValueInput) {
         binding.contact = viewState.contact
 
+        val fragment = findFragment() ?: ValueInputFragment.newInstance(viewState.contact)
         supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ValueInputFragment())
+                .replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName)
                 .runOnCommit { animateValueInputShow() }
                 .commit()
 
@@ -107,9 +108,9 @@ class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements
     private fun showContactSelect() {
         binding.contact = null
 
-
+        val fragment = findFragment() ?: ContactsFragment()
         supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ContactsFragment())
+                .replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName)
                 .runOnCommit { animateContactSelect() }
                 .commit()
     }

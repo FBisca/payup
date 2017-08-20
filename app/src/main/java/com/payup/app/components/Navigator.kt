@@ -7,19 +7,28 @@ import android.view.View
 import com.payup.app.ui.payment.ConfirmationActivity
 import com.payup.app.ui.payment.PaymentActivity
 import com.payup.di.ActivityScope
+import com.payup.model.Contact
 import javax.inject.Inject
 
 @ActivityScope
 class Navigator @Inject constructor(
         private val activity: Activity
 ) {
+    companion object {
+        const val EXTRA_CONTACT = "e_contact"
+        const val EXTRA_VALUE = "e_value"
+    }
+
     fun goToPaymentContacts() {
         val intent = Intent(activity, PaymentActivity::class.java)
         startActivity(intent)
     }
 
-    fun goToPaymentConfirmation() {
+    fun goToPaymentConfirmation(contact: Contact, value: Double) {
         val intent = Intent(activity, ConfirmationActivity::class.java)
+                .putExtra(EXTRA_CONTACT, contact)
+                .putExtra(EXTRA_VALUE, value)
+
         startActivity(intent)
     }
 
