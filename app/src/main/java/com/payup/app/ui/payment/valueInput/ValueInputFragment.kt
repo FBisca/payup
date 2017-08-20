@@ -1,4 +1,4 @@
-package com.payup.app.payment.valueInput
+package com.payup.app.ui.payment.valueInput
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle

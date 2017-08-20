@@ -1,0 +1,50 @@
+[
+  {
+    "clientId" : 1,
+    "name": "Tessa Violet",
+    "phoneNumber": "(11) 98776-3224",
+    "imageUrl": "https://68.media.tumblr.com/avatar_9b5581896cb0_128.png"
+  },
+  {
+    "clientId" : 2,
+    "name": "Ryan Gosling",
+    "phoneNumber": "(11) 96336-0496",
+    "imageUrl": "https://68.media.tumblr.com/avatar_54e293363208_128.png"
+  },
+  {
+    "clientId" : 3,
+    "name": "Jaymes Young",
+    "phoneNumber": "(11) 98389-6927",
+    "imageUrl": "https://68.media.tumblr.com/avatar_55a4a04ad255_128.png"
+  },
+  {
+    "clientId" : 4,
+    "name": "Mark Olivver",
+    "phoneNumber": "(13) 97645-3987",
+    "imageUrl": "https://68.media.tumblr.com/avatar_64695d3fe059_128.png"
+  },
+  {
+    "clientId" : 5,
+    "name": "Béatrice Martin",
+    "phoneNumber": "(13) 98265-3385",
+    "imageUrl": "http://pbs.twimg.com/profile_images/638290446125539328/c7Or5RE4_reasonably_small.jpg"
+  },
+  {
+    "clientId" : 6,
+    "name": "Emma Watson",
+    "phoneNumber": "(11) 97231-7733",
+    "imageUrl": "https://i.pinimg.com/736x/26/5c/aa/265caaac77a9c91298ddb5444343f1a8--emma-watson.jpg"
+  },
+  {
+    "clientId" : 7,
+    "name": "Emilia Clarke",
+    "phoneNumber": "(11) 95873-8475",
+    "imageUrl": "https://68.media.tumblr.com/avatar_2ecda83c0a05_128.png"
+  },
+  {
+    "clientId" : 8,
+    "name": "Mads Mikkelsen",
+    "phoneNumber": "(11) 98384-7564",
+    "imageUrl": "https://68.media.tumblr.com/avatar_1e120b22891c_128.png"
+  }
+]

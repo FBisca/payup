@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.payup">
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
       android:name=".app.App"
       android:allowBackup="true"
@@ -10,20 +12,20 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
 
-    <activity android:name=".app.home.HomeActivity"/>
+    <activity android:name="com.payup.app.ui.home.HomeActivity"/>
 
     <activity
-        android:name=".app.payment.PaymentActivity"
+        android:name="com.payup.app.ui.payment.PaymentActivity"
         android:theme="@style/AppTheme.DarkScreen"
         android:windowSoftInputMode="stateAlwaysHidden"/>
 
     <activity
-        android:name=".app.payment.ConfirmationActivity"
+        android:name="com.payup.app.ui.payment.ConfirmationActivity"
         android:theme="@style/AppTheme.DarkScreen"/>
 
     <activity-alias
         android:name=".Launcher"
-        android:targetActivity=".app.home.HomeActivity">
+        android:targetActivity="com.payup.app.ui.home.HomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

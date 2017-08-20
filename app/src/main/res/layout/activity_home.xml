@@ -5,7 +5,7 @@
 
     <variable
         name="viewModel"
-        type="com.payup.app.home.HomeViewModel"
+        type="com.payup.app.ui.home.HomeViewModel"
         />
 
     <variable
@@ -38,7 +38,7 @@
         android:background="#F2283642"
         />
 
-    <com.payup.app.widget.AvatarImageView
+    <com.payup.app.ui.widget.AvatarImageView
         android:id="@+id/avatar_photo_image"
         android:layout_width="112dp"
         android:layout_height="112dp"

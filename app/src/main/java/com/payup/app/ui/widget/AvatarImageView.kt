@@ -1,4 +1,4 @@
-package com.payup.app.widget
+package com.payup.app.ui.widget
 
 import android.content.Context
 import android.graphics.Canvas

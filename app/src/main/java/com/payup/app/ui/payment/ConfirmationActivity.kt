@@ -1,4 +1,4 @@
-package com.payup.app.payment
+package com.payup.app.ui.payment
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.payup.app.payment
+package com.payup.app.ui.payment
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -11,10 +11,10 @@ import android.view.View
 import com.payup.R
 import com.payup.app.components.ComponentFragmentActivity
 import com.payup.app.components.Navigator
-import com.payup.app.payment.PaymentViewModel.ViewState.ContactSelect
-import com.payup.app.payment.PaymentViewModel.ViewState.ValueInput
-import com.payup.app.payment.contacts.ContactsFragment
-import com.payup.app.payment.valueInput.ValueInputFragment
+import com.payup.app.ui.payment.PaymentViewModel.ViewState.ContactSelect
+import com.payup.app.ui.payment.PaymentViewModel.ViewState.ValueInput
+import com.payup.app.ui.payment.contacts.ContactsFragment
+import com.payup.app.ui.payment.valueInput.ValueInputFragment
 import com.payup.databinding.ActivityPaymentBinding
 import com.payup.di.components.PaymentActivityComponent
 import com.payup.di.components.PaymentActivityModule

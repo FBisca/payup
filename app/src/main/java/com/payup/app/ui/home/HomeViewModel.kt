@@ -1,6 +1,7 @@
-package com.payup.app.home
+package com.payup.app.ui.home
 
 import com.payup.app.components.Navigator
+import com.payup.data.repository.UserRepository
 import com.payup.di.ActivityScope
 import com.payup.model.User
 import io.reactivex.Observable
@@ -8,10 +9,11 @@ import javax.inject.Inject
 
 @ActivityScope
 class HomeViewModel @Inject constructor(
-        private val navigator: Navigator
+        private val navigator: Navigator,
+        private val userRepository: UserRepository
 ) {
     fun user(): Observable<User> {
-        return Observable.just(User("Doddle Clark", "doddleoddle@gmail.com"))
+        return userRepository.getUser().toObservable()
     }
 
     fun sendPayment() {

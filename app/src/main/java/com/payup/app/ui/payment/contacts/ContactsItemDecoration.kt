@@ -1,4 +1,4 @@
-package com.payup.app.payment.contacts
+package com.payup.app.ui.payment.contacts
 
 import android.content.Context
 import android.graphics.*

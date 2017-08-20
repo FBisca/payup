@@ -1,7 +1,7 @@
 package com.payup.di.modules
 
-import com.payup.app.home.HomeActivity
-import com.payup.app.payment.PaymentActivity
+import com.payup.app.ui.home.HomeActivity
+import com.payup.app.ui.payment.PaymentActivity
 import com.payup.di.ActivityComponentBuilder
 import com.payup.di.ActivityKey
 import com.payup.di.components.HomeActivityComponent

@@ -4,8 +4,8 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
-import com.payup.app.payment.ConfirmationActivity
-import com.payup.app.payment.PaymentActivity
+import com.payup.app.ui.payment.ConfirmationActivity
+import com.payup.app.ui.payment.PaymentActivity
 import com.payup.di.ActivityScope
 import javax.inject.Inject
 

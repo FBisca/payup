@@ -1,6 +1,6 @@
-package com.payup.app.payment
+package com.payup.app.ui.payment
 
-import com.payup.app.payment.contacts.ContactsAdapter
+import com.payup.app.ui.payment.contacts.ContactsAdapter
 import com.payup.di.ActivityScope
 import com.payup.model.Contact
 import com.payup.model.User

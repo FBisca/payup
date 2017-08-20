@@ -21,7 +21,7 @@
       tools:background="@color/windowBackgroundDark"
       >
 
-    <com.payup.app.widget.AvatarImageView
+    <com.payup.app.ui.widget.AvatarImageView
         android:id="@+id/avatar_photo_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
         app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"/>
 
-    <com.payup.app.widget.AvatarImageView
+    <com.payup.app.ui.widget.AvatarImageView
         android:id="@+id/recipient_photo_image"
         android:layout_width="80dp"
         android:layout_height="80dp"

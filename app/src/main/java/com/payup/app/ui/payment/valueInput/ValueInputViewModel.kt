@@ -1,4 +1,4 @@
-package com.payup.app.payment.valueInput
+package com.payup.app.ui.payment.valueInput
 
 import com.payup.app.components.Navigator
 import com.payup.di.FragmentScope
