@@ -1,6 +1,7 @@
 package com.payup.di.modules
 
 import com.payup.BuildConfig
+import com.payup.data.network.NetworkApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -35,5 +36,11 @@ class NetworkModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesNetworkApi(retrofit: Retrofit): NetworkApi {
+        return retrofit.create(NetworkApi::class.java)
     }
 }

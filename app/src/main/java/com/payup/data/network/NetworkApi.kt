@@ -13,7 +13,7 @@ interface NetworkApi {
 
     @POST("SendMoney")
     fun sendMoney(
-            @Query("ClienteId") clientId: String,
+            @Query("ClienteId") clientId: Int,
             @Query("token") token: String,
             @Query("valor") value: Double
     ): Single<Boolean>

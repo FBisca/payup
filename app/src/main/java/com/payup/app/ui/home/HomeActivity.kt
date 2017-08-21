@@ -3,6 +3,7 @@ package com.payup.app.ui.home
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.os.TokenWatcher
 import android.view.View
 import com.payup.R
 import com.payup.app.components.ComponentActivity
@@ -26,6 +27,7 @@ class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        viewModel.viewCreated()
         bindViewModel()
         bindUser()
     }
@@ -39,6 +41,7 @@ class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
 
     override fun onDestroy() {
         super.onDestroy()
+        viewModel.viewDestroyed()
         disposables.dispose()
     }
 
