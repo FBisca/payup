@@ -1,7 +1,7 @@
 package com.payup.di
 
 import android.app.Activity
-import com.payup.app.components.Navigator
+import com.payup.app.Navigator
 import dagger.*
 import javax.inject.Scope
 import kotlin.reflect.KClass

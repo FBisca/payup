@@ -1,4 +1,4 @@
-package com.payup.app.components
+package com.payup.app.arch
 
 import android.content.Context
 import android.os.Bundle

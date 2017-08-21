@@ -1,9 +1,10 @@
-package com.payup.app.components
+package com.payup.app
 
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
+import com.payup.app.ui.history.HistoryActivity
 import com.payup.app.ui.home.HomeActivity
 import com.payup.app.ui.payment.ConfirmationActivity
 import com.payup.app.ui.payment.PaymentActivity
@@ -37,6 +38,10 @@ class Navigator @Inject constructor(
                 .putExtra(EXTRA_VALUE, value)
 
         startActivity(intent)
+    }
+
+    fun goToHistoryActivity() {
+        startActivity(Intent(activity, HistoryActivity::class.java))
     }
 
     private fun startActivity(intent: Intent) {

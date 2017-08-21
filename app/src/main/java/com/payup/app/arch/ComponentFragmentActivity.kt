@@ -1,4 +1,4 @@
-package com.payup.app.components
+package com.payup.app.arch
 
 import com.payup.di.injectionFactory.FragmentInjectionFactory
 import dagger.Lazy

@@ -25,6 +25,11 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.DarkScreen"/>
 
+    <activity
+        android:name="com.payup.app.ui.history.HistoryActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.DarkScreen"/>
+
     <activity-alias
         android:name=".Launcher"
         android:targetActivity="com.payup.app.ui.home.HomeActivity">

@@ -9,8 +9,8 @@ import android.support.v4.view.ViewCompat
 import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.view.View
 import com.payup.R
-import com.payup.app.components.ComponentActivity
-import com.payup.app.components.Navigator
+import com.payup.app.arch.ComponentActivity
+import com.payup.app.Navigator
 import com.payup.app.ui.payment.valueInput.ConfirmationViewModel
 import com.payup.app.ui.payment.valueInput.ConfirmationViewModel.ViewState.*
 import com.payup.databinding.ActivityConfirmationBinding
@@ -154,7 +154,6 @@ class ConfirmationActivity : ComponentActivity() {
     private fun finishLoadingAnimation() {
         animator?.cancel()
         animator = ObjectAnimator.ofFloat(binding.iconArrowForward, "translationX", 0f).apply {
-            interpolator = FastOutSlowInInterpolator()
             duration = 1000
             start()
         }

@@ -1,11 +1,13 @@
 package com.payup.di.modules
 
+import com.payup.app.ui.history.HistoryActivity
 import com.payup.app.ui.home.HomeActivity
 import com.payup.app.ui.payment.ConfirmationActivity
 import com.payup.app.ui.payment.PaymentActivity
 import com.payup.di.ActivityComponentBuilder
 import com.payup.di.ActivityKey
 import com.payup.di.components.ConfirmationActivityComponent
+import com.payup.di.components.HistoryActivityComponent
 import com.payup.di.components.HomeActivityComponent
 import com.payup.di.components.PaymentActivityComponent
 import dagger.Binds
@@ -15,6 +17,7 @@ import dagger.multibindings.IntoMap
 @Module(subcomponents = arrayOf(
         HomeActivityComponent::class,
         PaymentActivityComponent::class,
+        HistoryActivityComponent::class,
         ConfirmationActivityComponent::class
 ))
 abstract class ActivityBindModule {
@@ -32,4 +35,9 @@ abstract class ActivityBindModule {
     @IntoMap
     @ActivityKey(ConfirmationActivity::class)
     abstract fun confirmationActivityComponent(builder: ConfirmationActivityComponent.Builder): ActivityComponentBuilder<*, *>
+
+    @Binds
+    @IntoMap
+    @ActivityKey(HistoryActivity::class)
+    abstract fun historyActivityComponent(builder: HistoryActivityComponent.Builder): ActivityComponentBuilder<*, *>
 }

@@ -1,7 +1,7 @@
 package com.payup.app.ui.home
 
 import android.util.Log
-import com.payup.app.components.Navigator
+import com.payup.app.Navigator
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.manager.TokenManager
 import com.payup.data.repository.UserRepository

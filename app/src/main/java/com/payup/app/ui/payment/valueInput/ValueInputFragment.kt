@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.payup.R
-import com.payup.app.components.ComponentFragment
+import com.payup.app.arch.ComponentFragment
 import com.payup.databinding.FragmentValueInputBinding
 import com.payup.di.components.ValueInputFragmentComponent
 import com.payup.di.components.ValueInputFragmentModule
 import com.payup.model.Contact
-import com.payup.utils.locale
-import java.text.NumberFormat
 import javax.inject.Inject
 
 class ValueInputFragment : ComponentFragment() {

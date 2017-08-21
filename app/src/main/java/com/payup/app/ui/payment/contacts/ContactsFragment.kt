@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.payup.R
-import com.payup.app.components.ComponentFragment
+import com.payup.app.arch.ComponentFragment
 import com.payup.di.components.ContactsFragmentComponent
 import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable

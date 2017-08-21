@@ -1,6 +1,6 @@
 package com.payup.app.ui.payment.valueInput
 
-import com.payup.app.components.Navigator
+import com.payup.app.Navigator
 import com.payup.app.ui.payment.valueInput.ConfirmationViewModel.ViewState.*
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository

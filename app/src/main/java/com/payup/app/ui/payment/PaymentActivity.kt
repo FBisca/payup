@@ -9,8 +9,8 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.view.View
 import com.payup.R
-import com.payup.app.components.ComponentFragmentActivity
-import com.payup.app.components.Navigator
+import com.payup.app.arch.ComponentFragmentActivity
+import com.payup.app.Navigator
 import com.payup.app.ui.payment.PaymentViewModel.ViewState.ContactSelect
 import com.payup.app.ui.payment.PaymentViewModel.ViewState.ValueInput
 import com.payup.app.ui.payment.contacts.ContactsFragment
