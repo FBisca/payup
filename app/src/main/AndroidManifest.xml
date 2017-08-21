@@ -16,11 +16,13 @@
 
     <activity
         android:name="com.payup.app.ui.payment.PaymentActivity"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme.DarkScreen"
         android:windowSoftInputMode="stateAlwaysHidden"/>
 
     <activity
         android:name="com.payup.app.ui.payment.ConfirmationActivity"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme.DarkScreen"/>
 
     <activity-alias

@@ -4,12 +4,8 @@
   <data>
 
     <variable
-        name="value"
-        type="Double"/>
-
-    <variable
-        name="contact"
-        type="com.payup.model.Contact"/>
+        name="viewModel"
+        type="com.payup.app.ui.payment.valueInput.ConfirmationViewModel"/>
   </data>
 
   <android.support.constraint.ConstraintLayout
@@ -21,24 +17,25 @@
       tools:background="@color/windowBackgroundDark"
       >
 
-    <com.payup.app.ui.widget.AvatarImageView
-        android:id="@+id/avatar_photo_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/dodie"
-        android:transitionName="avatarImage"
-        app:layout_constraintBottom_toTopOf="@id/value_text"
+    <TextView
+        android:id="@+id/message_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_medium"
+        android:layout_marginEnd="@dimen/space_large"
+        android:layout_marginStart="@dimen/space_large"
+        android:gravity="center"
+        android:text="@string/payment_success"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textColor="?android:textColorPrimaryInverse"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/avatar_photo_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/icon_arrow_forward"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed"
-        app:ringsColor="@drawable/avatar_portrait"
-        app:ringsCount="2"
-        app:ringsSize="2dp"
-        />
+        tools:visibility="visible"/>
 
     <ImageView
         android:id="@+id/icon_arrow_forward"
@@ -54,11 +51,28 @@
         app:layout_constraintTop_toTopOf="@+id/avatar_photo_image"/>
 
     <com.payup.app.ui.widget.AvatarImageView
+        android:id="@+id/avatar_photo_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dodie"
+        android:transitionName="avatarImage"
+        app:layout_constraintBottom_toTopOf="@id/value_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/icon_arrow_forward"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_text"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <com.payup.app.ui.widget.AvatarImageView
         android:id="@+id/recipient_photo_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:transitionName="recipientImage"
-        app:imageUrl="@{contact.imageUrl}"
+        app:imageUrl="@{viewModel.contact.imageUrl}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon_arrow_forward"
         app:layout_constraintTop_toTopOf="@id/avatar_photo_image"
@@ -75,7 +89,7 @@
         android:layout_marginTop="@dimen/space_small"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Display2"
         android:textColor="?android:textColorPrimaryInverse"
-        app:currencyValue="@{value}"
+        app:currencyValue="@{viewModel.value}"
         app:layout_constraintBottom_toTopOf="@id/recipient_name_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,9 +100,9 @@
         android:id="@+id/recipient_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@{viewModel.contact.name}"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
         android:textColor="?android:textColorPrimaryInverse"
-        android:text="@{contact.name}"
         app:layout_constraintBottom_toTopOf="@+id/icon_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,8 +130,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/space_medium"
         android:layout_marginStart="@dimen/space_xsmall"
-        android:text="@{contact.phoneNumber}"
         android:alpha="0.7"
+        android:text="@{viewModel.contact.phoneNumber}"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
         android:textColor="?android:textColorPrimaryInverse"
         app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
@@ -125,6 +139,30 @@
         app:layout_constraintStart_toEndOf="@+id/icon_phone"
         tools:text="(11) 96225-3044"
         />
+
+    <ImageView
+        android:id="@+id/icon_success"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/success_bg"
+        android:scaleType="center"
+        android:src="@drawable/ic_done_black_24dp"
+        android:tint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/recipient_photo_image"
+        app:layout_constraintStart_toStartOf="@id/recipient_photo_image"/>
+
+    <ImageView
+        android:id="@+id/icon_error"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/error_bg"
+        android:scaleType="center"
+        android:src="@drawable/ic_warning_black_24dp"
+        android:tint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_photo_image"
+        app:layout_constraintEnd_toEndOf="@id/avatar_photo_image"/>
 
     <Button
         android:id="@+id/confirmation_button"
@@ -135,6 +173,7 @@
         android:layout_marginLeft="@dimen/space_medium"
         android:layout_marginRight="@dimen/space_medium"
         android:minHeight="58dp"
+        android:onClick="@{() -> viewModel.confirmClick()}"
         android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         />

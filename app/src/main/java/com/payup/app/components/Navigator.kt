@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
+import com.payup.app.ui.home.HomeActivity
 import com.payup.app.ui.payment.ConfirmationActivity
 import com.payup.app.ui.payment.PaymentActivity
 import com.payup.di.ActivityScope
@@ -17,6 +18,12 @@ class Navigator @Inject constructor(
     companion object {
         const val EXTRA_CONTACT = "e_contact"
         const val EXTRA_VALUE = "e_value"
+    }
+
+    fun returnToHome() {
+        val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 
     fun goToPaymentContacts() {

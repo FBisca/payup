@@ -3,6 +3,10 @@
   <string name="send_payment">Enviar Pagamento</string>
   <string name="send">Enviar</string>
   <string name="confirm">Confirm</string>
+  <string name="try_again">Tentar novamente</string>
+  <string name="back">Voltar</string>
   <string name="payment_history">Histórico de Pagamentos</string>
   <string name="select_contact">Selecione um contato</string>
+  <string name="payment_success">Pagamento Enviado com Sucesso</string>
+  <string name="payment_error">Houve um problema</string>
 </resources>
