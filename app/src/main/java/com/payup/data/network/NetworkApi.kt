@@ -1,6 +1,6 @@
 package com.payup.data.network
 
-import com.payup.data.network.entities.GetTransferContactRaw
+import com.payup.data.network.entities.GetTransferResponseRaw
 import com.payup.data.network.entities.SendMoneyRequestRaw
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -17,5 +17,5 @@ interface NetworkApi {
     fun sendMoney(@Body payload: SendMoneyRequestRaw): Single<Boolean>
 
     @GET("GetTransfers")
-    fun getTransfers(@Query("token") token: String): Single<List<GetTransferContactRaw>>
+    fun /**/getTransfers(@Query("token") token: String): Single<List<GetTransferResponseRaw>>
 }

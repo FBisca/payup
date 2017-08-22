@@ -5,4 +5,8 @@
     <attr name="ringsColor" format="reference"/>
     <attr name="ringsSize" format="dimension"/>
   </declare-styleable>
+
+  <declare-styleable name="PillarView">
+    <attr name="percentage" format="integer"/>
+  </declare-styleable>
 </resources>

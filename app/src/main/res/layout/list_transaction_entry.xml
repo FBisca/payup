@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="transaction"
+        type="com.payup.model.Transaction"/>
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/space_medium">
+
+    <com.payup.app.ui.widget.AvatarImageView
+        android:id="@+id/avatar_photo_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/dodie"
+        app:imageUrl="@{transaction.user.imageUrl}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ringsColor="@drawable/avatar_portrait"
+        app:ringsCount="2"
+        app:ringsSize="2dp"
+        />
+
+    <TextView
+        android:id="@+id/contact_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_medium"
+        android:maxLines="1"
+        android:text="@{transaction.user.name}"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tesla da Silva Carvalho"
+        />
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_medium"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:currencyValue="@{transaction.value}"
+        app:layout_constraintStart_toEndOf="@+id/avatar_photo_image"
+        app:layout_constraintTop_toBottomOf="@+id/contact_name_text"
+        tools:text="R$ 1.200,00"/>
+
+    <ImageView
+        android:id="@+id/icon_phone"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="@dimen/space_small"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_smartphone_black_24dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="@+id/total_value"
+        app:layout_constraintTop_toBottomOf="@+id/total_value"/>
+
+    <TextView
+        android:id="@+id/contact_phone_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_xsmall"
+        android:alpha="0.8"
+        android:text="@{transaction.user.phoneNumber}"
+        android:ellipsize="start"
+        android:singleLine="true"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
+        app:layout_constraintEnd_toStartOf="@id/icon_time"
+        app:layout_constraintStart_toEndOf="@+id/icon_phone"
+        tools:text="(11) 96225-3044"
+        />
+
+    <View
+        android:id="@+id/icon_time"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="@dimen/space_xsmall"
+        android:background="@drawable/dot_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
+        app:layout_constraintEnd_toStartOf="@+id/time_text"
+        app:layout_constraintTop_toTopOf="@+id/icon_phone"/>
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:textColor="@android:color/white"
+        app:date="@{transaction.date}"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Monday, 15:00"
+        />
+
+  </android.support.constraint.ConstraintLayout>
+
+</layout>

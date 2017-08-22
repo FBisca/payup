@@ -44,4 +44,8 @@ class HomeViewModel @Inject constructor(
     fun sendPayment() {
         navigator.goToPaymentContacts()
     }
+
+    fun history() {
+        navigator.goToHistoryActivity()
+    }
 }

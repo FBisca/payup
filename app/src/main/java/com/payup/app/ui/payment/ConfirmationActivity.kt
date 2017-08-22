@@ -108,12 +108,20 @@ class ConfirmationActivity : ComponentActivity() {
         finishLoadingAnimation()
 
         binding.confirmationButton.isEnabled = true
-        binding.confirmationButton.setText(R.string.back)
-        binding.messageText.setText(R.string.payment_success)
-        binding.messageText.visibility = View.VISIBLE
+        binding.confirmationButton.setText(R.string.finish)
+
+        binding.messageText.apply {
+            alpha = 0f
+            setText(R.string.payment_success)
+            visibility = View.VISIBLE
+
+            ViewCompat.animate(this)
+                    .alpha(1f)
+                    .setInterpolator(FastOutSlowInInterpolator())
+                    .start()
+        }
 
         binding.iconSuccess.apply {
-            alpha = 0f
             scaleX = 0f
             scaleY = 0f
             visibility = View.VISIBLE
@@ -132,8 +140,16 @@ class ConfirmationActivity : ComponentActivity() {
 
         binding.confirmationButton.isEnabled = true
         binding.confirmationButton.setText(R.string.try_again)
-        binding.messageText.setText(R.string.payment_error)
-        binding.messageText.visibility = View.VISIBLE
+        binding.messageText.apply {
+            alpha = 0f
+            setText(R.string.payment_error)
+            visibility = View.VISIBLE
+
+            ViewCompat.animate(this)
+                    .alpha(1f)
+                    .setInterpolator(FastOutSlowInInterpolator())
+                    .start()
+        }
 
         binding.iconError.apply {
             alpha = 0f
