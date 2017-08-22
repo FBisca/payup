@@ -1,16 +1,13 @@
-package com.payup.app.ui.history
+package com.payup.app.ui.screens.payment.contacts
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
-import android.graphics.RectF
+import android.graphics.*
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.payup.R
 
-class HistoryItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
+class ContactsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
     private val dividerHeight = context.resources.displayMetrics.density * 0.5f
     private val dividerMargin = context.resources.getDimension(R.dimen.space_medium)
@@ -25,7 +22,7 @@ class HistoryItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
     override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
         val childCount = parent.childCount
-        for (position in 1 until childCount) {
+        for (position in 0 until childCount) {
             val child = parent.getChildAt(position)
             val params = child.layoutParams as RecyclerView.LayoutParams
 

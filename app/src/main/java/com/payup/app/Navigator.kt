@@ -4,10 +4,10 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
-import com.payup.app.ui.history.HistoryActivity
-import com.payup.app.ui.home.HomeActivity
-import com.payup.app.ui.payment.ConfirmationActivity
-import com.payup.app.ui.payment.PaymentActivity
+import com.payup.app.ui.screens.history.HistoryActivity
+import com.payup.app.ui.screens.home.HomeActivity
+import com.payup.app.ui.screens.payment.ConfirmationActivity
+import com.payup.app.ui.screens.payment.PaymentActivity
 import com.payup.di.ActivityScope
 import com.payup.model.Contact
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.payup.app.ui.payment.contacts
+package com.payup.app.ui.screens.payment.contacts
 
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.ContactRepository

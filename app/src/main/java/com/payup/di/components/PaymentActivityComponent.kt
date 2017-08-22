@@ -1,10 +1,10 @@
 package com.payup.di.components
 
-import com.payup.app.ui.payment.PaymentActivity
-import com.payup.app.ui.payment.contacts.ContactsAdapter
-import com.payup.app.ui.payment.contacts.ContactsFragment
-import com.payup.app.ui.payment.PaymentViewModel
-import com.payup.app.ui.payment.valueInput.ValueInputFragment
+import com.payup.app.ui.screens.payment.PaymentActivity
+import com.payup.app.ui.screens.payment.contacts.ContactsAdapter
+import com.payup.app.ui.screens.payment.contacts.ContactsFragment
+import com.payup.app.ui.screens.payment.PaymentViewModel
+import com.payup.app.ui.screens.payment.valueInput.ValueInputFragment
 import com.payup.di.*
 import dagger.Module
 import dagger.Provides

@@ -5,7 +5,7 @@
 
     <variable
         name="viewModel"
-        type="com.payup.app.ui.payment.valueInput.ConfirmationViewModel"/>
+        type="com.payup.app.ui.screens.payment.valueInput.ConfirmationViewModel"/>
   </data>
 
   <android.support.constraint.ConstraintLayout
@@ -79,7 +79,7 @@
         app:ringsColor="@drawable/avatar_portrait"
         app:ringsCount="2"
         app:ringsSize="2dp"
-        tools:src="@drawable/tessa"
+        tools:src="@drawable/dodie"
         />
 
     <TextView

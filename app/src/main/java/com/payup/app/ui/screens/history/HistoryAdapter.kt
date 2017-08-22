@@ -1,4 +1,4 @@
-package com.payup.app.ui.history
+package com.payup.app.ui.screens.history
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.HORIZONTAL
@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.payup.app.ui.history.list.HistoryListEntity
+import com.payup.app.ui.entities.HistoryListEntity
 import com.payup.databinding.ListGraphsBinding
 import com.payup.databinding.ListTransactionEntryBinding
 

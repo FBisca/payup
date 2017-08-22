@@ -1,9 +1,9 @@
 package com.payup.di.modules
 
-import com.payup.app.ui.history.HistoryActivity
-import com.payup.app.ui.home.HomeActivity
-import com.payup.app.ui.payment.ConfirmationActivity
-import com.payup.app.ui.payment.PaymentActivity
+import com.payup.app.ui.screens.history.HistoryActivity
+import com.payup.app.ui.screens.home.HomeActivity
+import com.payup.app.ui.screens.payment.ConfirmationActivity
+import com.payup.app.ui.screens.payment.PaymentActivity
 import com.payup.di.ActivityComponentBuilder
 import com.payup.di.ActivityKey
 import com.payup.di.components.ConfirmationActivityComponent

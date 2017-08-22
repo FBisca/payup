@@ -9,7 +9,7 @@
         type="Double"/>
     <variable
         name="viewModel"
-        type="com.payup.app.ui.payment.valueInput.ValueInputViewModel"/>
+        type="com.payup.app.ui.screens.payment.valueInput.ValueInputViewModel"/>
   </data>
 
   <android.support.constraint.ConstraintLayout

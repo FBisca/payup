@@ -9,4 +9,6 @@
   <string name="select_contact">Selecione um contato</string>
   <string name="payment_success">Pagamento enviado com sucesso</string>
   <string name="payment_error">Houve um problema</string>
+  <string name="no_internet">Ué! Sua conexão com a internet deve estar fraca.</string>
+  <string name="no_content">Nenhum conteúdo ainda.\n\nFaça alguns pagamentos e volte depois.</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.payup.di.components
 
-import com.payup.app.ui.payment.ConfirmationActivity
+import com.payup.app.ui.screens.payment.ConfirmationActivity
 import com.payup.di.ActivityComponent
 import com.payup.di.ActivityComponentBuilder
 import com.payup.di.ActivityModule

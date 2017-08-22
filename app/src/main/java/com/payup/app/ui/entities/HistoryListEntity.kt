@@ -1,4 +1,4 @@
-package com.payup.app.ui.history.list
+package com.payup.app.ui.entities
 
 import com.payup.model.TransactionGraph
 

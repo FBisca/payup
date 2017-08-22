@@ -1,4 +1,4 @@
-package com.payup.app.ui.home
+package com.payup.app.ui.screens.home
 
 import android.util.Log
 import com.payup.app.Navigator

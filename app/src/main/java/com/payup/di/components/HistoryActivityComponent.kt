@@ -1,6 +1,6 @@
 package com.payup.di.components
 
-import com.payup.app.ui.history.HistoryActivity
+import com.payup.app.ui.screens.history.HistoryActivity
 import com.payup.di.ActivityComponent
 import com.payup.di.ActivityComponentBuilder
 import com.payup.di.ActivityModule

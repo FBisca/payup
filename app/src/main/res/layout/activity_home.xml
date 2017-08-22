@@ -5,7 +5,7 @@
 
     <variable
         name="viewModel"
-        type="com.payup.app.ui.home.HomeViewModel"
+        type="com.payup.app.ui.screens.home.HomeViewModel"
         />
 
     <variable

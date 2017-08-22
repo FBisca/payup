@@ -1,4 +1,4 @@
-package com.payup.app.ui.home
+package com.payup.app.ui.screens.home
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -7,7 +7,7 @@ import android.view.View
 import com.payup.R
 import com.payup.app.arch.ComponentActivity
 import com.payup.app.Navigator
-import com.payup.app.ui.payment.PaymentActivity
+import com.payup.app.ui.screens.payment.PaymentActivity
 import com.payup.databinding.ActivityHomeBinding
 import com.payup.di.components.HomeActivityComponent
 import com.payup.di.components.HomeActivityModule

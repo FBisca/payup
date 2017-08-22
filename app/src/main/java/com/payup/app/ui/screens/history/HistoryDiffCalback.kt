@@ -1,11 +1,11 @@
-package com.payup.app.ui.payment.contacts
+package com.payup.app.ui.screens.history
 
 import android.support.v7.util.DiffUtil
-import com.payup.model.Contact
+import com.payup.app.ui.entities.HistoryListEntity
 
-class ContactsDiffCalback(
-        private val oldList: List<Contact>,
-        private val newList: List<Contact>
+class HistoryDiffCalback(
+        private val oldList: List<HistoryListEntity>,
+        private val newList: List<HistoryListEntity>
 ) : DiffUtil.Callback() {
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldList[oldItemPosition] == newList[newItemPosition]

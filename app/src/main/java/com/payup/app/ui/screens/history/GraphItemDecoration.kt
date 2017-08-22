@@ -1,4 +1,4 @@
-package com.payup.app.ui.history
+package com.payup.app.ui.screens.history
 
 import android.content.Context
 import android.graphics.Rect

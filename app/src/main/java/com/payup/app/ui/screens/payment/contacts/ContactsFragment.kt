@@ -1,4 +1,4 @@
-package com.payup.app.ui.payment.contacts
+package com.payup.app.ui.screens.payment.contacts
 
 import android.os.Bundle
 import android.support.v7.util.DiffUtil

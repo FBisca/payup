@@ -1,4 +1,4 @@
-package com.payup.app.ui.payment.contacts
+package com.payup.app.ui.screens.payment.contacts
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
