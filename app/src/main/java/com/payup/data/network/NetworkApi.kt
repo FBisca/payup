@@ -17,5 +17,5 @@ interface NetworkApi {
     fun sendMoney(@Body payload: SendMoneyRequestRaw): Single<Boolean>
 
     @GET("GetTransfers")
-    fun /**/getTransfers(@Query("token") token: String): Single<List<GetTransferResponseRaw>>
+    fun getTransfers(@Query("token") token: String): Single<List<GetTransferResponseRaw>>
 }
