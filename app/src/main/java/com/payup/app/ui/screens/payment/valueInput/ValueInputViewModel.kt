@@ -38,6 +38,7 @@ class ValueInputViewModel @Inject constructor(
     private fun concatValue(code: Int) {
         val oldValue = inputEvents.value
         val newValue = when {
+            oldValue == "0" && code == 0 -> "0"
             oldValue == "0" -> code.toString()
             oldValue.length >= 7 -> oldValue.substring(1 until oldValue.length) + code
             else -> oldValue + code

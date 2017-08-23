@@ -1,6 +1,7 @@
 package com.payup.app.ui.screens.payment
 
 import com.payup.app.ui.screens.payment.contacts.ContactsAdapter
+import com.payup.data.repository.UserRepository
 import com.payup.di.ActivityScope
 import com.payup.model.Contact
 import com.payup.model.User
@@ -10,7 +11,8 @@ import javax.inject.Inject
 
 @ActivityScope
 class PaymentViewModel @Inject constructor(
-        viewState: ViewState
+        viewState: ViewState,
+        private val userRepository: UserRepository
 ) : ContactsAdapter.Listener {
 
     val viewState: BehaviorSubject<ViewState> = BehaviorSubject.createDefault(viewState)
@@ -31,7 +33,7 @@ class PaymentViewModel @Inject constructor(
     }
 
     fun user(): Observable<User> {
-        return Observable.just(User("Dodie Clark", "doddleoddle@gmail.com"))
+        return userRepository.getUser().toObservable()
     }
 
     sealed class ViewState {

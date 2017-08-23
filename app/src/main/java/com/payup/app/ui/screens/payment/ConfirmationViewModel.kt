@@ -1,7 +1,7 @@
-package com.payup.app.ui.screens.payment.valueInput
+package com.payup.app.ui.screens.payment
 
 import com.payup.app.Navigator
-import com.payup.app.ui.screens.payment.valueInput.ConfirmationViewModel.ViewState.*
+import com.payup.app.ui.screens.payment.ConfirmationViewModel.ViewState.*
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository
 import com.payup.di.ActivityScope

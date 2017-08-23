@@ -2,7 +2,7 @@ package com.payup.data.manager
 
 import com.payup.data.datasource.UserDataSource
 import com.payup.data.network.NetworkApi
-import com.payup.model.User
+import com.payup.model.Fabricator
 import io.reactivex.Single
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
@@ -31,7 +31,7 @@ class TokenManagerTest {
 
     @Test
     fun test_tokenCallTwiceShouldRequestJustOnce() {
-        val user = User("Teste", "teste")
+        val user = Fabricator.user()
         `when`(userDataSource.user()).thenReturn(Single.just(user))
         `when`(networkApi.generateToken(user.name, user.email)).thenReturn(Single.just("token"))
 
@@ -50,7 +50,7 @@ class TokenManagerTest {
 
     @Test
     fun test_onErrorTokenMustBeReviewed() {
-        val user = User("Teste", "teste")
+        val user = Fabricator.user()
         `when`(userDataSource.user()).thenReturn(Single.just(user))
         `when`(networkApi.generateToken(user.name, user.email)).thenReturn(Single.error(IOException()))
 
@@ -69,7 +69,7 @@ class TokenManagerTest {
 
     @Test
     fun test_afterErrorTokenMustBeCached() {
-        val user = User("Teste", "teste")
+        val user = Fabricator.user()
         `when`(userDataSource.user()).thenReturn(Single.just(user))
         `when`(networkApi.generateToken(user.name, user.email)).thenReturn(Single.error(IOException()))
 
@@ -89,7 +89,7 @@ class TokenManagerTest {
 
     @Test
     fun test_consecutiveErrors() {
-        val user = User("Teste", "teste")
+        val user = Fabricator.user()
         `when`(userDataSource.user()).thenReturn(Single.just(user))
         `when`(networkApi.generateToken(user.name, user.email)).thenReturn(Single.error(IOException()))
 

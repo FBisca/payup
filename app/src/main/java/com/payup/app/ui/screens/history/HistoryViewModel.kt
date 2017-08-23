@@ -9,7 +9,6 @@ import com.payup.model.TransactionGraph
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @ActivityScope

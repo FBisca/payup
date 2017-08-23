@@ -11,8 +11,7 @@ import android.view.View
 import com.payup.R
 import com.payup.app.arch.ComponentActivity
 import com.payup.app.Navigator
-import com.payup.app.ui.screens.payment.valueInput.ConfirmationViewModel
-import com.payup.app.ui.screens.payment.valueInput.ConfirmationViewModel.ViewState.*
+import com.payup.app.ui.screens.payment.ConfirmationViewModel.ViewState.*
 import com.payup.databinding.ActivityConfirmationBinding
 import com.payup.di.components.ConfirmationActivityComponent
 import com.payup.di.components.ConfirmationActivityModule

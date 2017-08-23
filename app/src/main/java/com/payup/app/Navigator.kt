@@ -8,10 +8,12 @@ import com.payup.app.ui.screens.history.HistoryActivity
 import com.payup.app.ui.screens.home.HomeActivity
 import com.payup.app.ui.screens.payment.ConfirmationActivity
 import com.payup.app.ui.screens.payment.PaymentActivity
+import com.payup.data.OpenForTests
 import com.payup.di.ActivityScope
 import com.payup.model.Contact
 import javax.inject.Inject
 
+@OpenForTests
 @ActivityScope
 class Navigator @Inject constructor(
         private val activity: Activity

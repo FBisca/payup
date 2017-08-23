@@ -1,5 +1,6 @@
 package com.payup.data.manager
 
+import com.payup.data.OpenForTests
 import com.payup.data.datasource.UserDataSource
 import com.payup.data.network.NetworkApi
 import io.reactivex.Observable
@@ -8,6 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
+@OpenForTests
 class TokenManager @Inject constructor(
         private val userDataSource: UserDataSource,
         private val networkApi: NetworkApi

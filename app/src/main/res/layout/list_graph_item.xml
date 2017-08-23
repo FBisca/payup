@@ -34,9 +34,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:imageUrl="@{graph.user.imageUrl}"
-        app:ringsColor="@drawable/avatar_portrait"
-        app:ringsCount="2"
-        app:ringsSize="2dp"
         />
 
     <TextView
