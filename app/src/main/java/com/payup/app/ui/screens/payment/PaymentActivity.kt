@@ -18,10 +18,16 @@ import com.payup.app.ui.screens.payment.valueInput.ValueInputFragment
 import com.payup.databinding.ActivityPaymentBinding
 import com.payup.di.components.PaymentActivityComponent
 import com.payup.di.components.PaymentActivityModule
+import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements {
+
+    companion object {
+        const val SAVED_STATE = "state"
+        const val SAVED_CONTACT = "contact"
+    }
 
     @Inject
     lateinit var viewModel: PaymentViewModel
@@ -31,7 +37,7 @@ class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements
 
     override fun initInjection(savedInstanceState: Bundle?) {
         injectionBuilder<PaymentActivityComponent.Builder>()
-                .module(PaymentActivityModule(this))
+                .module(PaymentActivityModule(this, restoreState(savedInstanceState)))
                 .build()
                 .injectMembers(this)
     }
@@ -72,6 +78,28 @@ class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements
                     binding.recipientPhotoImage to binding.recipientPhotoImage.transitionName
             )
             else -> emptyArray()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val currentState = viewModel.viewState.value
+        when (currentState) {
+            is  PaymentViewModel.ViewState.ValueInput -> {
+                outState.putInt(SAVED_STATE, 1)
+                outState.putParcelable(SAVED_CONTACT, currentState.contact)
+            }
+            else -> outState.putInt(SAVED_STATE, 0)
+        }
+    }
+
+    private fun restoreState(savedInstanceState: Bundle?): PaymentViewModel.ViewState {
+        val state = savedInstanceState?.getInt(SAVED_STATE) ?: 0
+        val contact = savedInstanceState?.getParcelable<Contact?>(SAVED_CONTACT)
+
+        return when {
+            state == 1 && contact != null -> PaymentViewModel.ViewState.ValueInput(contact)
+            else -> PaymentViewModel.ViewState.ContactSelect
         }
     }
 

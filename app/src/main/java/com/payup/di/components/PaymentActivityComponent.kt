@@ -23,11 +23,14 @@ interface PaymentActivityComponent : ActivityComponent<PaymentActivity> {
         ContactsFragmentComponent::class,
         ValueInputFragmentComponent::class
 ))
-class PaymentActivityModule(activity: PaymentActivity) : ActivityModule(activity) {
+class PaymentActivityModule(
+        activity: PaymentActivity,
+        private val initialViewState: PaymentViewModel.ViewState
+) : ActivityModule(activity) {
 
     @Provides
     fun providesViewState(): PaymentViewModel.ViewState {
-        return PaymentViewModel.ViewState.ContactSelect
+        return initialViewState
     }
 
     @Provides

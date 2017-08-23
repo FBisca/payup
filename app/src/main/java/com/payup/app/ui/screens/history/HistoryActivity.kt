@@ -10,13 +10,20 @@ import android.view.ViewGroup
 import com.payup.R
 import com.payup.app.arch.ComponentActivity
 import com.payup.app.ui.entities.HistoryListEntity
+import com.payup.app.ui.screens.history.HistoryViewModel.ViewState.ListState
 import com.payup.databinding.ActivityHistoryBinding
 import com.payup.di.components.HistoryActivityComponent
 import com.payup.di.components.HistoryActivityModule
+import com.payup.model.Transaction
 import io.reactivex.disposables.CompositeDisposable
+import java.util.*
 import javax.inject.Inject
 
 class HistoryActivity : ComponentActivity() {
+    companion object {
+        const val SAVED_STATE = "state"
+        const val SAVED_LIST = "list"
+    }
 
     @Inject
     lateinit var viewModel: HistoryViewModel
@@ -27,7 +34,7 @@ class HistoryActivity : ComponentActivity() {
 
     override fun initInjection(savedInstanceState: Bundle?) {
         injectionBuilder<HistoryActivityComponent.Builder>()
-                .module(HistoryActivityModule(this))
+                .module(HistoryActivityModule(this, restoreState(savedInstanceState)))
                 .build()
                 .injectMembers(this)
     }
@@ -54,7 +61,7 @@ class HistoryActivity : ComponentActivity() {
                 .subscribe(
                         {
                             when (it) {
-                                is HistoryViewModel.ViewState.ListState -> showList(it.list)
+                                is ListState -> showList(it.list)
                                 HistoryViewModel.ViewState.Error -> showError()
                                 HistoryViewModel.ViewState.Loading -> showLoading()
                             }
@@ -76,7 +83,29 @@ class HistoryActivity : ComponentActivity() {
         return true
     }
 
-    private fun showList(newList: List<HistoryListEntity>) {
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val currentState = viewModel.viewState.value
+        when {
+            currentState is ListState && currentState.list.isNotEmpty() -> {
+                outState.putInt(SAVED_STATE, 1)
+                outState.putParcelableArrayList(SAVED_LIST, ArrayList<Transaction>(currentState.list))
+            }
+            else -> outState.putInt(SAVED_STATE, 0)
+        }
+    }
+
+    private fun restoreState(savedInstanceState: Bundle?): HistoryViewModel.ViewState {
+        val state = savedInstanceState?.getInt(SAVED_STATE) ?: 0
+        val list = savedInstanceState?.getParcelableArrayList<Transaction>(SAVED_LIST)
+
+        return when {
+            state == 1 && list != null -> HistoryViewModel.ViewState.ListState(list)
+            else -> HistoryViewModel.ViewState.Loading
+        }
+    }
+
+    private fun showList(newList: List<Transaction>) {
         TransitionManager.beginDelayedTransition(binding.root as ViewGroup)
         binding.historyList.visibility = View.VISIBLE
         binding.progressBar.visibility = View.GONE
@@ -93,10 +122,11 @@ class HistoryActivity : ComponentActivity() {
 
         }
 
+        val convertedList = HistoryListEntity.convertToListEntity(newList)
         val oldList = historyAdapter.items
-        historyAdapter.items = newList
+        historyAdapter.items = convertedList
 
-        DiffUtil.calculateDiff(HistoryDiffCalback(oldList, newList))
+        DiffUtil.calculateDiff(HistoryDiffCalback(oldList, convertedList))
                 .dispatchUpdatesTo(historyAdapter)
     }
 

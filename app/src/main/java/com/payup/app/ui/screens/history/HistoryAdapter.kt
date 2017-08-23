@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import com.payup.app.ui.entities.HistoryListEntity
 import com.payup.databinding.ListGraphsBinding
 import com.payup.databinding.ListTransactionEntryBinding
+import com.payup.model.Transaction
+import com.payup.model.TransactionGraph
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
