@@ -2,6 +2,7 @@ package com.payup.app.ui.screens.home
 
 import android.util.Log
 import com.payup.app.Navigator
+import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.manager.TokenManager
 import com.payup.data.repository.UserRepository
@@ -11,6 +12,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
+@OpenForTests
 @ActivityScope
 class HomeViewModel @Inject constructor(
         private val navigator: Navigator,

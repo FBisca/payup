@@ -2,6 +2,7 @@ package com.payup.app.ui.screens.payment
 
 import com.payup.app.Navigator
 import com.payup.app.ui.screens.payment.ConfirmationViewModel.ViewState.*
+import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository
 import com.payup.di.ActivityScope
@@ -10,6 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
+@OpenForTests
 @ActivityScope
 class ConfirmationViewModel @Inject constructor(
         val contact: Contact,
