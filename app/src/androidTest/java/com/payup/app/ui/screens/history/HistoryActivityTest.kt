@@ -53,7 +53,9 @@ class HistoryActivityTest {
 
         `when`(viewModel.viewState).thenReturn(viewState)
 
-        viewState.onNext(HistoryViewModel.ViewState.ListState(mockList()))
+        val transaction = Fabricator.transaction(value = 100.0)
+
+        viewState.onNext(HistoryViewModel.ViewState.ListState(listOf(transaction)))
 
         testRobot.launch().isGraphDisplayed()
     }
@@ -66,23 +68,12 @@ class HistoryActivityTest {
 
         val transaction = Fabricator.transaction(value = 100.0)
 
-        viewState.onNext(HistoryViewModel.ViewState.ListState(mockList(transactionList = listOf(transaction))))
+        viewState.onNext(HistoryViewModel.ViewState.ListState(listOf(transaction)))
 
         testRobot.launch()
                 .checkUserName(1, transaction.user.name)
                 .checkPhoneNumber(1, transaction.user.phoneNumber)
                 .checkValue(1, "\$100.00")
-    }
-
-    private fun mockList(
-            graphList: List<TransactionGraph> = listOf(Fabricator.transactionGraph()),
-            transactionList: List<Transaction> = listOf(Fabricator.transaction())
-    ): List<HistoryListEntity> {
-
-        return listOf(
-                HistoryListEntity.GraphList(graphList),
-                *transactionList.map { HistoryListEntity.TransactionEntry(it) }.toTypedArray()
-        )
     }
 
     inner class ActivityTestRobot {
