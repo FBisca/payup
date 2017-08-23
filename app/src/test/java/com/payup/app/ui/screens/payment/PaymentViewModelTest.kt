@@ -1,12 +1,8 @@
 package com.payup.app.ui.screens.payment
 
-import com.payup.app.Navigator
-import com.payup.data.manager.TokenManager
 import com.payup.data.repository.UserRepository
-import com.payup.model.Fabricator
-import org.hamcrest.CoreMatchers
+import com.payup.test.Fabricator
 import org.hamcrest.CoreMatchers.*
-import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

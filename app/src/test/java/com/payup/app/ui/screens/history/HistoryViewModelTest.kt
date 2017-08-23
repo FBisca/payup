@@ -4,7 +4,7 @@ import com.payup.app.ui.entities.HistoryListEntity
 import com.payup.app.ui.screens.history.HistoryViewModel.ViewState.ListState
 import com.payup.data.manager.TestSchedulerManager
 import com.payup.data.repository.UserRepository
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import io.reactivex.Single
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert.assertThat

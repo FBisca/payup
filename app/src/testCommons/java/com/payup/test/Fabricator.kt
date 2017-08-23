@@ -1,5 +1,9 @@
-package com.payup.model
+package com.payup.test
 
+import com.payup.model.Contact
+import com.payup.model.Transaction
+import com.payup.model.TransactionGraph
+import com.payup.model.User
 import java.util.*
 
 object Fabricator {

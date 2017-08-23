@@ -30,6 +30,12 @@ android {
   dataBinding {
     enabled = true
   }
+
+  sourceSets {
+    def sharedTestsDir = 'src/testCommons/java'
+    test.java.srcDirs += sharedTestsDir
+    androidTest.java.srcDirs += sharedTestsDir
+  }
 }
 
 kapt {

@@ -2,7 +2,7 @@ package com.payup.data.manager
 
 import com.payup.data.datasource.UserDataSource
 import com.payup.data.network.NetworkApi
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import io.reactivex.Single
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat

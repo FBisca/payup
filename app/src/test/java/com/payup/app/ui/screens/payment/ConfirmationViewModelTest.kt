@@ -3,7 +3,7 @@ package com.payup.app.ui.screens.payment
 import com.payup.app.Navigator
 import com.payup.data.manager.TestSchedulerManager
 import com.payup.data.repository.UserRepository
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import io.reactivex.Completable
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.instanceOf

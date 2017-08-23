@@ -1,6 +1,7 @@
 package com.payup.app.ui.screens.history
 
 import com.payup.app.ui.entities.HistoryListEntity
+import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository
 import com.payup.di.ActivityScope
@@ -11,6 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
+@OpenForTests
 @ActivityScope
 class HistoryViewModel @Inject constructor(
         private val userRepository: UserRepository,

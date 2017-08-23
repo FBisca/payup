@@ -1,11 +1,11 @@
 package com.payup.data.repository
 
-import com.payup.anyNonNull
+import com.payup.test.anyNonNull
 import com.payup.data.datasource.ContactDataSource
 import com.payup.data.datasource.UserDataSource
 import com.payup.data.manager.TokenManager
 import com.payup.data.network.NetworkApi
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Assert.assertNotNull

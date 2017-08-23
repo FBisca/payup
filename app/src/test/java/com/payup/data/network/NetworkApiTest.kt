@@ -1,17 +1,13 @@
 package com.payup.data.network
 
 import com.payup.data.network.entities.SendMoneyRequestRaw
-import com.payup.model.Fabricator
-import com.squareup.moshi.JsonReader
+import com.payup.test.Fabricator
 import okhttp3.HttpUrl
 
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Okio
 import org.hamcrest.CoreMatchers.equalTo
-import org.json.JSONObject
 import org.junit.After
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -21,7 +17,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.FileInputStream
-import java.net.URLEncoder
 
 class NetworkApiTest {
 

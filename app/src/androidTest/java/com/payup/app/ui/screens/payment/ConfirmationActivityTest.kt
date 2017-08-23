@@ -11,10 +11,14 @@ import android.support.test.runner.AndroidJUnit4
 import com.payup.R
 import com.payup.app.App
 import com.payup.app.Navigator
-import com.payup.app.ui.screens.anyNonNull
+import com.payup.app.ui.screens.history.HistoryActivity
+import com.payup.app.ui.screens.test.ComponentActivityTestRule
 import com.payup.di.components.ConfirmationActivityComponent
+import com.payup.di.components.HistoryActivityComponent
 import com.payup.di.injectionFactory.ActivityInjectionFactory
 import com.payup.model.Contact
+import com.payup.test.Fabricator
+import com.payup.test.anyNonNull
 import io.reactivex.subjects.BehaviorSubject
 import org.junit.Before
 import org.junit.Rule
@@ -27,41 +31,29 @@ import org.mockito.MockitoAnnotations
 @RunWith(AndroidJUnit4::class)
 class ConfirmationActivityTest {
 
-    @Rule
-    @JvmField
-    val rule = ActivityTestRule<ConfirmationActivity>(ConfirmationActivity::class.java, true, false)
-
-    var testRobot = ConfirmationActivityTestRobot()
+    var testRobot = ActivityTestRobot()
 
     @Mock
     lateinit var viewModel: ConfirmationViewModel
 
-    @Mock
-    lateinit var componentBuilder: ConfirmationActivityComponent.Builder
-
-    @Mock
-    lateinit var component: ConfirmationActivityComponent
+    @Rule
+    @JvmField
+    val rule = ComponentActivityTestRule(
+            ConfirmationActivity::class,
+            ConfirmationActivityComponent.Builder::class,
+            ConfirmationActivityComponent::class
+    ) { confirmationActivity ->
+        confirmationActivity.viewModel = viewModel
+    }
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-
-        val app = InstrumentationRegistry.getTargetContext().applicationContext as App
-
-        app.activityInjectionFactory = ActivityInjectionFactory(mapOf(ConfirmationActivity::class.java to componentBuilder))
-
-        `when`(componentBuilder.module(anyNonNull())).thenReturn(componentBuilder)
-        `when`(componentBuilder.build()).thenReturn(component)
-
-        `when`(component.injectMembers(anyNonNull())).then { invocation ->
-            val activity: ConfirmationActivity = invocation.getArgument(0)
-            activity.apply { viewModel = this@ConfirmationActivityTest.viewModel }
-        }
     }
 
     @Test
     fun test_informationDisplay() {
-        val contact = Contact(1, "John Doe", "(11) 96225-3044", "http")
+        val contact = Fabricator.contact()
 
         `when`(viewModel.viewState).thenReturn(BehaviorSubject.create())
         `when`(viewModel.contact).thenReturn(contact)
@@ -73,7 +65,7 @@ class ConfirmationActivityTest {
                 .checkValue("$100.00")
     }
 
-    inner class ConfirmationActivityTestRobot {
+    inner class ActivityTestRobot {
 
         fun launch(contact: Contact, value: Double) = apply {
             val intent = Intent(InstrumentationRegistry.getTargetContext(), ConfirmationActivity::class.java)

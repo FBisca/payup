@@ -6,14 +6,14 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
-import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.payup.R
 import com.payup.app.App
-import com.payup.app.ui.screens.anyNonNull
+import com.payup.app.ui.screens.test.ComponentActivityTestRule
 import com.payup.di.components.HomeActivityComponent
 import com.payup.di.injectionFactory.ActivityInjectionFactory
-import com.payup.model.User
+import com.payup.test.Fabricator
+import com.payup.test.anyNonNull
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -26,49 +26,42 @@ import org.mockito.MockitoAnnotations
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest {
 
-    @Rule
-    @JvmField
-    val rule = ActivityTestRule<HomeActivity>(HomeActivity::class.java)
-
-    var testRobot = HomeActivityTestRobot()
+    var testRobot = ActivityTestRobot()
 
     @Mock
     lateinit var viewModel: HomeViewModel
 
-    @Mock
-    lateinit var componentBuilder: HomeActivityComponent.Builder
+    val user = Fabricator.user()
 
-    @Mock
-    lateinit var component: HomeActivityComponent
+    @Rule
+    @JvmField
+    val rule = ComponentActivityTestRule(
+            HomeActivity::class,
+            HomeActivityComponent.Builder::class,
+            HomeActivityComponent::class
+    ) { homeActivity ->
+        homeActivity.viewModel = viewModel
+    }
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-
-        val app = InstrumentationRegistry.getTargetContext().applicationContext as App
-
-        app.activityInjectionFactory = ActivityInjectionFactory(mapOf(HomeActivity::class.java to componentBuilder))
-
-        `when`(componentBuilder.module(anyNonNull())).thenReturn(componentBuilder)
-        `when`(componentBuilder.build()).thenReturn(component)
-
-        `when`(component.injectMembers(anyNonNull())).then { invocation ->
-            val activity: HomeActivity = invocation.getArgument(0)
-            activity.apply { viewModel = this@HomeActivityTest.viewModel }
-        }
-
-        `when`(viewModel.user()).thenReturn(Observable.just(User("Dodie", "dodie@gmail.com")))
+        `when`(viewModel.user()).thenReturn(Observable.just(user))
     }
 
     @Test
     fun test_userDisplay() {
-        rule.launchActivity(Intent(InstrumentationRegistry.getTargetContext(), HomeActivity::class.java))
-
-        testRobot.checkName("Dodie")
-                .checkEmail("dodie@gmail.com")
+        testRobot.launch()
+                .checkName(user.name)
+                .checkEmail(user.email)
     }
 
-    class HomeActivityTestRobot {
+    inner class ActivityTestRobot {
+        fun launch() = apply {
+            val intent = Intent(InstrumentationRegistry.getTargetContext(), HomeActivity::class.java)
+            rule.launchActivity(intent)
+        }
+
         fun checkName(name: String) = apply {
             onView(withId(R.id.avatar_name_text)).check(matches(withText(name)))
         }

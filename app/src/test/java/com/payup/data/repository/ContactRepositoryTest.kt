@@ -1,7 +1,7 @@
 package com.payup.data.repository
 
 import com.payup.data.datasource.ContactDataSource
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import io.reactivex.Single
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat

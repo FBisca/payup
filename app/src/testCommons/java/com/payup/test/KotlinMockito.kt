@@ -1,4 +1,4 @@
-package com.payup.app.ui.screens
+package com.payup.test
 
 import org.mockito.Mockito
 

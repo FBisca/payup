@@ -1,7 +1,7 @@
 package com.payup.app.ui.screens.payment.valueInput
 
 import com.payup.app.Navigator
-import com.payup.model.Fabricator
+import com.payup.test.Fabricator
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Before
