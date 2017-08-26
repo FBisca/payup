@@ -18,8 +18,6 @@ import javax.inject.Inject
 
 class ConfirmationActivity : ComponentActivity<ConfirmationActivityModule>() {
 
-    private lateinit var binding: ActivityConfirmationBinding
-
     @Inject
     lateinit var navigator: Navigator
 
@@ -27,6 +25,8 @@ class ConfirmationActivity : ComponentActivity<ConfirmationActivityModule>() {
     lateinit var viewModel: ConfirmationViewModel
 
     private var animator: Animator? = null
+
+    private lateinit var binding: ActivityConfirmationBinding
 
     override fun instantiateModule(savedInstanceState: Bundle?): ConfirmationActivityModule {
         return ConfirmationActivityModule(

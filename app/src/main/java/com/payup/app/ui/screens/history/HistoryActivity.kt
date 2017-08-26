@@ -28,9 +28,10 @@ class HistoryActivity : ComponentActivity<HistoryActivityModule>() {
     @Inject
     lateinit var viewModel: HistoryViewModel
 
-    private lateinit var binding: ActivityHistoryBinding
     private val historyAdapter: HistoryAdapter = HistoryAdapter()
     private val disposable = CompositeDisposable()
+
+    private lateinit var binding: ActivityHistoryBinding
 
     override fun instantiateModule(savedInstanceState: Bundle?): HistoryActivityModule {
         return HistoryActivityModule(this, restoreState(savedInstanceState))

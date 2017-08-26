@@ -14,7 +14,7 @@ I always try to use different architectures and libs while I'm developing these 
 - Build Tools 3.0.0-beta2
 - Using my own `MVVM` architecture composed of
   - Kotlin 1.1.4
-  - Dagger2
+  - Dagger2 with my own Dagger-Android implementation
   - RxJava2
   - DataBinding
   - Using new experimental `@Parcelize` from Kotlin 1.1.4, that might cause unexpected errors

@@ -15,10 +15,10 @@ import javax.inject.Inject
 
 class HomeActivity : ComponentActivity<HomeActivityModule>(), Navigator.HasSharedElements {
 
-    private lateinit var layoutBinding: ActivityHomeBinding
-
     @Inject
     lateinit var viewModel: HomeViewModel
+
+    private lateinit var layoutBinding: ActivityHomeBinding
 
     private val disposables = CompositeDisposable()
 

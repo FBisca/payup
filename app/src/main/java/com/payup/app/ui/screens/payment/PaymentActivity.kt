@@ -31,8 +31,9 @@ class PaymentActivity : ComponentActivity<PaymentActivityModule>(), Navigator.Ha
     @Inject
     lateinit var viewModel: PaymentViewModel
 
-    private lateinit var binding: ActivityPaymentBinding
     private val disposables = CompositeDisposable()
+
+    private lateinit var binding: ActivityPaymentBinding
 
     override fun instantiateModule(savedInstanceState: Bundle?): PaymentActivityModule {
         return PaymentActivityModule(this, restoreState(savedInstanceState))
