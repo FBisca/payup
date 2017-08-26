@@ -6,19 +6,13 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
-import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.payup.R
-import com.payup.app.App
 import com.payup.app.Navigator
-import com.payup.app.ui.screens.history.HistoryActivity
 import com.payup.app.ui.screens.test.ComponentActivityTestRule
-import com.payup.di.components.ConfirmationActivityComponent
-import com.payup.di.components.HistoryActivityComponent
-import com.payup.di.injectionFactory.ActivityInjectionFactory
+import com.payup.di.components.activity.ConfirmationActivityComponent
 import com.payup.model.Contact
 import com.payup.test.Fabricator
-import com.payup.test.anyNonNull
 import io.reactivex.subjects.BehaviorSubject
 import org.junit.Before
 import org.junit.Rule
@@ -29,26 +23,24 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 @RunWith(AndroidJUnit4::class)
-class ConfirmationActivityTest {
+class ConfirmationActivityTest : ComponentActivityTestRule.InjectionInterceptor<ConfirmationActivity> {
+
+    @Rule
+    @JvmField
+    val rule = ComponentActivityTestRule(ConfirmationActivity::class, ConfirmationActivityComponent.Builder::class, ConfirmationActivityComponent::class, this)
 
     var testRobot = ActivityTestRobot()
 
     @Mock
     lateinit var viewModel: ConfirmationViewModel
 
-    @Rule
-    @JvmField
-    val rule = ComponentActivityTestRule(
-            ConfirmationActivity::class,
-            ConfirmationActivityComponent.Builder::class,
-            ConfirmationActivityComponent::class
-    ) { confirmationActivity ->
-        confirmationActivity.viewModel = viewModel
-    }
-
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+    }
+
+    override fun onInjectIntercept(activity: ConfirmationActivity) {
+        activity.viewModel = viewModel
     }
 
     @Test

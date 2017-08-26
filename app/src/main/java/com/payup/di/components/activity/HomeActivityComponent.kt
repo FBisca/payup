@@ -1,10 +1,9 @@
-package com.payup.di.components
+package com.payup.di.components.activity
 
 import com.payup.app.ui.screens.home.HomeActivity
-import com.payup.di.ActivityComponent
-import com.payup.di.ActivityComponentBuilder
-import com.payup.di.ActivityModule
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityComponent
+import com.payup.di.arch.ActivityModule
+import com.payup.di.arch.ActivityScope
 import dagger.Module
 import dagger.Subcomponent
 
@@ -12,7 +11,7 @@ import dagger.Subcomponent
 @Subcomponent(modules = arrayOf(HomeActivityModule::class))
 interface HomeActivityComponent : ActivityComponent<HomeActivity> {
     @Subcomponent.Builder
-    interface Builder : ActivityComponentBuilder<HomeActivityComponent, HomeActivityModule>
+    interface Builder : ActivityComponent.Builder<HomeActivity, HomeActivityModule>
 }
 
 @Module

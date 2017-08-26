@@ -9,7 +9,7 @@ import com.payup.app.ui.screens.home.HomeActivity
 import com.payup.app.ui.screens.payment.ConfirmationActivity
 import com.payup.app.ui.screens.payment.PaymentActivity
 import com.payup.data.OpenForTests
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityScope
 import com.payup.model.Contact
 import javax.inject.Inject
 

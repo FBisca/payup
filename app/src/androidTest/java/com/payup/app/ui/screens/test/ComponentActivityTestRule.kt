@@ -1,24 +1,24 @@
 package com.payup.app.ui.screens.test
 
+import android.app.Activity
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import com.payup.app.App
 import com.payup.app.arch.ComponentActivity
-import com.payup.di.ActivityComponent
-import com.payup.di.ActivityComponentBuilder
-import com.payup.di.ActivityModule
-import com.payup.di.injectionFactory.ActivityInjectionFactory
+import com.payup.di.arch.ActivityComponent
+import com.payup.di.arch.ActivityInjectionFactory
+import com.payup.di.arch.ActivityModule
 import com.payup.test.anyNonNull
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import kotlin.reflect.KClass
 
-open class ComponentActivityTestRule<T : ComponentActivity, out C: ActivityComponent<T>, out B : ActivityComponentBuilder<C, M>, in M: ActivityModule>
+open class ComponentActivityTestRule<T : ComponentActivity<M>, out C: ActivityComponent<T>, out B : ActivityComponent.Builder<T, M>, M: ActivityModule>
 constructor(
         private val activityClass: KClass<T>,
         private val builderClass: KClass<B>,
         private val componentClass: KClass<C>,
-        private val onInjectMembersCalled: (T) -> Unit
+        private val injectionInterceptor: ComponentActivityTestRule.InjectionInterceptor<T>
 ) : ActivityTestRule<T>(activityClass.java, true, false) {
 
     override fun beforeActivityLaunched() {
@@ -41,10 +41,14 @@ constructor(
 
         `when`(componentMock.injectMembers(anyNonNull())).thenAnswer { invocation ->
             val activity: T = invocation.getArgument(0)
-            onInjectMembersCalled(activity)
+            injectionInterceptor.onInjectIntercept(activity)
         }
 
         return componentMock
+    }
+
+    interface InjectionInterceptor<in T: Activity> {
+        fun onInjectIntercept(activity: T)
     }
 
 }

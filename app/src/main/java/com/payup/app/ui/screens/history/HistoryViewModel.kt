@@ -3,7 +3,7 @@ package com.payup.app.ui.screens.history
 import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityScope
 import com.payup.model.Transaction
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable

@@ -8,12 +8,9 @@ import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.runner.AndroidJUnit4
 import com.payup.R
-import com.payup.app.ui.entities.HistoryListEntity
 import com.payup.app.ui.screens.RecyclerViewMatcher.Companion.withRecyclerView
 import com.payup.app.ui.screens.test.ComponentActivityTestRule
-import com.payup.di.components.HistoryActivityComponent
-import com.payup.model.Transaction
-import com.payup.model.TransactionGraph
+import com.payup.di.components.activity.HistoryActivityComponent
 import com.payup.test.Fabricator
 import io.reactivex.subjects.BehaviorSubject
 import org.junit.Before
@@ -25,26 +22,24 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 @RunWith(AndroidJUnit4::class)
-class HistoryActivityTest {
+class HistoryActivityTest : ComponentActivityTestRule.InjectionInterceptor<HistoryActivity> {
+
+    @Rule
+    @JvmField
+    val rule = ComponentActivityTestRule(HistoryActivity::class, HistoryActivityComponent.Builder::class, HistoryActivityComponent::class, this)
 
     var testRobot = ActivityTestRobot()
 
     @Mock
     lateinit var viewModel: HistoryViewModel
 
-    @Rule
-    @JvmField
-    val rule = ComponentActivityTestRule(
-            HistoryActivity::class,
-            HistoryActivityComponent.Builder::class,
-            HistoryActivityComponent::class
-    ) { historyActivity ->
-        historyActivity.viewModel = viewModel
-    }
-
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+    }
+
+    override fun onInjectIntercept(activity: HistoryActivity) {
+        activity.viewModel = viewModel
     }
 
     @Test

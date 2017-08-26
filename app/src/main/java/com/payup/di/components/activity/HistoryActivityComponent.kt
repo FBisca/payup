@@ -1,11 +1,10 @@
-package com.payup.di.components
+package com.payup.di.components.activity
 
 import com.payup.app.ui.screens.history.HistoryActivity
 import com.payup.app.ui.screens.history.HistoryViewModel
-import com.payup.di.ActivityComponent
-import com.payup.di.ActivityComponentBuilder
-import com.payup.di.ActivityModule
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityComponent
+import com.payup.di.arch.ActivityModule
+import com.payup.di.arch.ActivityScope
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
@@ -14,7 +13,7 @@ import dagger.Subcomponent
 @Subcomponent(modules = arrayOf(HistoryActivityModule::class))
 interface HistoryActivityComponent : ActivityComponent<HistoryActivity> {
     @Subcomponent.Builder
-    interface Builder : ActivityComponentBuilder<HistoryActivityComponent, HistoryActivityModule>
+    interface Builder : ActivityComponent.Builder<HistoryActivity, HistoryActivityModule>
 }
 
 @Module

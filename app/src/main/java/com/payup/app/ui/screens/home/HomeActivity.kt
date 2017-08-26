@@ -5,16 +5,15 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.View
 import com.payup.R
-import com.payup.app.arch.ComponentActivity
 import com.payup.app.Navigator
+import com.payup.app.arch.ComponentActivity
 import com.payup.app.ui.screens.payment.PaymentActivity
 import com.payup.databinding.ActivityHomeBinding
-import com.payup.di.components.HomeActivityComponent
-import com.payup.di.components.HomeActivityModule
+import com.payup.di.components.activity.HomeActivityModule
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
+class HomeActivity : ComponentActivity<HomeActivityModule>(), Navigator.HasSharedElements {
 
     private lateinit var layoutBinding: ActivityHomeBinding
 
@@ -23,19 +22,16 @@ class HomeActivity : ComponentActivity(), Navigator.HasSharedElements {
 
     private val disposables = CompositeDisposable()
 
+    override fun instantiateModule(savedInstanceState: Bundle?): HomeActivityModule {
+        return HomeActivityModule(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         viewModel.viewCreated()
         bindViewModel()
         bindUser()
-    }
-
-    override fun initInjection(savedInstanceState: Bundle?) {
-        injectionBuilder<HomeActivityComponent.Builder>()
-                .module(HomeActivityModule(this))
-                .build()
-                .injectMembers(this)
     }
 
     override fun onDestroy() {

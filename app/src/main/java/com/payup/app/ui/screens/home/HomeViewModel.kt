@@ -6,7 +6,7 @@ import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.manager.TokenManager
 import com.payup.data.repository.UserRepository
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityScope
 import com.payup.model.User
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable

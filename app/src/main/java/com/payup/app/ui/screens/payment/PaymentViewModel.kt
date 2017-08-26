@@ -2,7 +2,7 @@ package com.payup.app.ui.screens.payment
 
 import com.payup.app.ui.screens.payment.contacts.ContactsAdapter
 import com.payup.data.repository.UserRepository
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityScope
 import com.payup.model.Contact
 import com.payup.model.User
 import io.reactivex.Observable

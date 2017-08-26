@@ -5,7 +5,7 @@ import com.payup.app.ui.screens.payment.ConfirmationViewModel.ViewState.*
 import com.payup.data.OpenForTests
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.UserRepository
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityScope
 import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject

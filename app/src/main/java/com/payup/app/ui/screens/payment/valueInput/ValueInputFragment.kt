@@ -2,14 +2,16 @@ package com.payup.app.ui.screens.payment.valueInput
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.payup.R
 import com.payup.app.arch.ComponentFragment
 import com.payup.databinding.FragmentValueInputBinding
-import com.payup.di.components.ValueInputFragmentComponent
-import com.payup.di.components.ValueInputFragmentModule
+import com.payup.di.arch.FragmentComponent
+import com.payup.di.components.fragment.ValueInputFragmentComponent
+import com.payup.di.components.fragment.ValueInputFragmentModule
 import com.payup.model.Contact
 import javax.inject.Inject
 
@@ -29,9 +31,9 @@ class ValueInputFragment : ComponentFragment() {
 
     private lateinit var binding: FragmentValueInputBinding
 
-    override fun initInjection(savedInstanceState: Bundle?) {
-        injectionBuilder<ValueInputFragmentComponent.Builder>()
-                .module(ValueInputFragmentModule(arguments.getParcelable(ARG_CONTACT)))
+    override fun <B : FragmentComponent.Builder<T>, T : Fragment> injectMembers(instance: T, builder: B, savedInstanceState: Bundle?) {
+        val castedBuilder = builder as ValueInputFragmentComponent.Builder
+        castedBuilder.module(ValueInputFragmentModule(arguments.getParcelable(ARG_CONTACT)))
                 .build()
                 .injectMembers(this)
     }

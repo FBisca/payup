@@ -8,12 +8,9 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.runner.AndroidJUnit4
 import com.payup.R
-import com.payup.app.App
 import com.payup.app.ui.screens.test.ComponentActivityTestRule
-import com.payup.di.components.HomeActivityComponent
-import com.payup.di.injectionFactory.ActivityInjectionFactory
+import com.payup.di.components.activity.HomeActivityComponent
 import com.payup.test.Fabricator
-import com.payup.test.anyNonNull
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -24,7 +21,11 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 @RunWith(AndroidJUnit4::class)
-class HomeActivityTest {
+class HomeActivityTest : ComponentActivityTestRule.InjectionInterceptor<HomeActivity> {
+
+    @Rule
+    @JvmField
+    val rule = ComponentActivityTestRule(HomeActivity::class, HomeActivityComponent.Builder::class, HomeActivityComponent::class, this)
 
     var testRobot = ActivityTestRobot()
 
@@ -33,20 +34,14 @@ class HomeActivityTest {
 
     val user = Fabricator.user()
 
-    @Rule
-    @JvmField
-    val rule = ComponentActivityTestRule(
-            HomeActivity::class,
-            HomeActivityComponent.Builder::class,
-            HomeActivityComponent::class
-    ) { homeActivity ->
-        homeActivity.viewModel = viewModel
-    }
-
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         `when`(viewModel.user()).thenReturn(Observable.just(user))
+    }
+
+    override fun onInjectIntercept(activity: HomeActivity) {
+        activity.viewModel = viewModel
     }
 
     @Test

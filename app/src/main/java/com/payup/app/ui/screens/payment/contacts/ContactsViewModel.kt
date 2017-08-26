@@ -2,7 +2,7 @@ package com.payup.app.ui.screens.payment.contacts
 
 import com.payup.data.manager.SchedulerManager
 import com.payup.data.repository.ContactRepository
-import com.payup.di.FragmentScope
+import com.payup.di.arch.FragmentScope
 import com.payup.model.Contact
 import io.reactivex.Observable
 import javax.inject.Inject

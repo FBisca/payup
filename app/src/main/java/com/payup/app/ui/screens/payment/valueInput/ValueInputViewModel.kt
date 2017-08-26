@@ -1,7 +1,7 @@
 package com.payup.app.ui.screens.payment.valueInput
 
 import com.payup.app.Navigator
-import com.payup.di.FragmentScope
+import com.payup.di.arch.FragmentScope
 import com.payup.model.Contact
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject

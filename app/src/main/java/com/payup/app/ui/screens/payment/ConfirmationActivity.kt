@@ -9,15 +9,14 @@ import android.support.v4.view.ViewCompat
 import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.view.View
 import com.payup.R
-import com.payup.app.arch.ComponentActivity
 import com.payup.app.Navigator
+import com.payup.app.arch.ComponentActivity
 import com.payup.app.ui.screens.payment.ConfirmationViewModel.ViewState.*
 import com.payup.databinding.ActivityConfirmationBinding
-import com.payup.di.components.ConfirmationActivityComponent
-import com.payup.di.components.ConfirmationActivityModule
+import com.payup.di.components.activity.ConfirmationActivityModule
 import javax.inject.Inject
 
-class ConfirmationActivity : ComponentActivity() {
+class ConfirmationActivity : ComponentActivity<ConfirmationActivityModule>() {
 
     private lateinit var binding: ActivityConfirmationBinding
 
@@ -29,16 +28,12 @@ class ConfirmationActivity : ComponentActivity() {
 
     private var animator: Animator? = null
 
-    override fun initInjection(savedInstanceState: Bundle?) {
-        val module = ConfirmationActivityModule(
+    override fun instantiateModule(savedInstanceState: Bundle?): ConfirmationActivityModule {
+        return ConfirmationActivityModule(
                 this,
                 intent.getParcelableExtra(Navigator.EXTRA_CONTACT),
                 intent.getDoubleExtra(Navigator.EXTRA_VALUE, 0.0)
         )
-        injectionBuilder<ConfirmationActivityComponent.Builder>()
-                .module(module)
-                .build()
-                .injectMembers(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

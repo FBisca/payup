@@ -12,10 +12,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
+@Singleton
 class NetworkModule {
 
     @Provides
-    @Singleton
     fun providesOkHttpClient(): OkHttpClient {
         val interceptor = when {
             BuildConfig.DEBUG -> HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -28,7 +28,6 @@ class NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .baseUrl("http://processoseletivoneon.azurewebsites.net/")
@@ -39,7 +38,6 @@ class NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun providesNetworkApi(retrofit: Retrofit): NetworkApi {
         return retrofit.create(NetworkApi::class.java)
     }

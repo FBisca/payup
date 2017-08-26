@@ -9,20 +9,19 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.view.View
 import com.payup.R
-import com.payup.app.arch.ComponentFragmentActivity
 import com.payup.app.Navigator
+import com.payup.app.arch.ComponentActivity
 import com.payup.app.ui.screens.payment.PaymentViewModel.ViewState.ContactSelect
 import com.payup.app.ui.screens.payment.PaymentViewModel.ViewState.ValueInput
 import com.payup.app.ui.screens.payment.contacts.ContactsFragment
 import com.payup.app.ui.screens.payment.valueInput.ValueInputFragment
 import com.payup.databinding.ActivityPaymentBinding
-import com.payup.di.components.PaymentActivityComponent
-import com.payup.di.components.PaymentActivityModule
+import com.payup.di.components.activity.PaymentActivityModule
 import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements {
+class PaymentActivity : ComponentActivity<PaymentActivityModule>(), Navigator.HasSharedElements {
 
     companion object {
         const val SAVED_STATE = "state"
@@ -35,11 +34,8 @@ class PaymentActivity : ComponentFragmentActivity(), Navigator.HasSharedElements
     private lateinit var binding: ActivityPaymentBinding
     private val disposables = CompositeDisposable()
 
-    override fun initInjection(savedInstanceState: Bundle?) {
-        injectionBuilder<PaymentActivityComponent.Builder>()
-                .module(PaymentActivityModule(this, restoreState(savedInstanceState)))
-                .build()
-                .injectMembers(this)
+    override fun instantiateModule(savedInstanceState: Bundle?): PaymentActivityModule {
+        return PaymentActivityModule(this, restoreState(savedInstanceState))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

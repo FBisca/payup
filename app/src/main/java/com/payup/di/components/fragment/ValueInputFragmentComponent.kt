@@ -1,9 +1,8 @@
-package com.payup.di.components
+package com.payup.di.components.fragment
 
 import com.payup.app.ui.screens.payment.valueInput.ValueInputFragment
-import com.payup.di.FragmentComponent
-import com.payup.di.FragmentComponentBuilder
-import com.payup.di.FragmentScope
+import com.payup.di.arch.FragmentComponent
+import com.payup.di.arch.FragmentScope
 import com.payup.model.Contact
 import dagger.Module
 import dagger.Provides
@@ -13,7 +12,7 @@ import dagger.Subcomponent
 @FragmentScope
 interface ValueInputFragmentComponent : FragmentComponent<ValueInputFragment> {
     @Subcomponent.Builder
-    interface Builder : FragmentComponentBuilder<ValueInputFragmentComponent> {
+    interface Builder : FragmentComponent.Builder<ValueInputFragment> {
         fun module(module: ValueInputFragmentModule): Builder
     }
 }

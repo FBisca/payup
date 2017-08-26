@@ -12,14 +12,14 @@ import com.payup.app.arch.ComponentActivity
 import com.payup.app.ui.entities.HistoryListEntity
 import com.payup.app.ui.screens.history.HistoryViewModel.ViewState.ListState
 import com.payup.databinding.ActivityHistoryBinding
-import com.payup.di.components.HistoryActivityComponent
-import com.payup.di.components.HistoryActivityModule
+import com.payup.di.components.activity.HistoryActivityModule
 import com.payup.model.Transaction
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 import javax.inject.Inject
 
-class HistoryActivity : ComponentActivity() {
+class HistoryActivity : ComponentActivity<HistoryActivityModule>() {
+
     companion object {
         const val SAVED_STATE = "state"
         const val SAVED_LIST = "list"
@@ -32,11 +32,8 @@ class HistoryActivity : ComponentActivity() {
     private val historyAdapter: HistoryAdapter = HistoryAdapter()
     private val disposable = CompositeDisposable()
 
-    override fun initInjection(savedInstanceState: Bundle?) {
-        injectionBuilder<HistoryActivityComponent.Builder>()
-                .module(HistoryActivityModule(this, restoreState(savedInstanceState)))
-                .build()
-                .injectMembers(this)
+    override fun instantiateModule(savedInstanceState: Bundle?): HistoryActivityModule {
+        return HistoryActivityModule(this, restoreState(savedInstanceState))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

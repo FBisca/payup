@@ -1,10 +1,9 @@
-package com.payup.di.components
+package com.payup.di.components.activity
 
 import com.payup.app.ui.screens.payment.ConfirmationActivity
-import com.payup.di.ActivityComponent
-import com.payup.di.ActivityComponentBuilder
-import com.payup.di.ActivityModule
-import com.payup.di.ActivityScope
+import com.payup.di.arch.ActivityComponent
+import com.payup.di.arch.ActivityModule
+import com.payup.di.arch.ActivityScope
 import com.payup.model.Contact
 import dagger.Module
 import dagger.Provides
@@ -14,7 +13,7 @@ import dagger.Subcomponent
 @Subcomponent(modules = arrayOf(ConfirmationActivityModule::class))
 interface ConfirmationActivityComponent : ActivityComponent<ConfirmationActivity> {
     @Subcomponent.Builder
-    interface Builder : ActivityComponentBuilder<ConfirmationActivityComponent, ConfirmationActivityModule>
+    interface Builder : ActivityComponent.Builder<ConfirmationActivity, ConfirmationActivityModule>
 }
 
 @Module

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.payup.R
 import com.payup.app.arch.ComponentFragment
-import com.payup.di.components.ContactsFragmentComponent
 import com.payup.model.Contact
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -25,12 +24,6 @@ class ContactsFragment : ComponentFragment() {
     private lateinit var contactList: RecyclerView
     private val contactAdapter = ContactsAdapter()
     private val disposables = CompositeDisposable()
-
-    override fun initInjection(savedInstanceState: Bundle?) {
-        injectionBuilder<ContactsFragmentComponent.Builder>()
-                .build()
-                .injectMembers(this)
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater,

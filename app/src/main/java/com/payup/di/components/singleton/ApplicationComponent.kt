@@ -1,4 +1,4 @@
-package com.payup.di.components
+package com.payup.di.components.singleton
 
 import com.payup.app.App
 import com.payup.di.modules.ActivityBindModule
